@@ -1,0 +1,22 @@
+Mapa normal
+Mapa de Ubicación
+
+
+Nombre del lote
+Parroquia
+Polígono
+Influencia
+Clase de Tierra
+Área de plano
+Centroide
+
+Realizado por:
+Revisado por:
+
+Trámite:
+N de Reporte:
+Fecha:
+Cod:
+
+
+Observaciones:

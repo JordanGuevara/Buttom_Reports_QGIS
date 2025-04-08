@@ -1,0 +1,43 @@
+<!DOCTYPE qgis PRINTLAYOUT>
+<qgis printlayout>
+  <Layouts>
+    <Layout name="plantilla_simple" units="mm">
+      <Paper width="210" height="297" orientation="portrait"/> <!-- A4 vertical -->
+
+      <!-- Mapa principal -->
+      <MultiFrame type="0" name="Mapa" frameCount="1">
+        <Frame width="180" height="150" x="15" y="30">
+          <Map canvasExtent="0,0,100,100" scale="1000" rotation="0"/>
+        </Frame>
+      </MultiFrame>
+
+      <!-- Título -->
+      <Label name="Título" x="105" y="10" width="100" height="15" halign="center">
+        <TextStyle fontFamily="Arial" fontSize="14" bold="1">
+          <text>Mi Reporte en QGIS</text>
+        </TextStyle>
+      </Label>
+
+      <!-- Leyenda -->
+      <MultiFrame type="1" name="Leyenda" frameCount="1">
+        <Frame width="80" height="100" x="15" y="190">
+          <Legend mapUuid="" resizeToContents="1" columnCount="1"/>
+        </Frame>
+      </MultiFrame>
+
+      <!-- Escala gráfica -->
+      <MultiFrame type="3" name="Escala" frameCount="1">
+        <Frame width="100" height="20" x="110" y="250">
+          <ScaleBar style="Single Box" units="Meters" segments="4" segmentSize="25"/>
+        </Frame>
+      </MultiFrame>
+
+      <!-- Fecha automática -->
+      <Label name="Fecha" x="160" y="280" width="40" height="10" halign="right">
+        <TextStyle fontFamily="Arial" fontSize="10">
+          <text>[% format_date( now(), 'dd/MM/yyyy') %]</text> <!-- Fecha actual -->
+        </TextStyle>
+      </Label>
+    </Layout>
+  </Layouts>
+</qgis>
