@@ -1,3 +1,4 @@
+import os
 from qgis.PyQt.QtWidgets import (
     QDialog, QLabel, QLineEdit, QVBoxLayout, QFormLayout, QPushButton, QMessageBox
 )
@@ -7,18 +8,26 @@ from qgis.core import (
 )
 from qgis.PyQt.QtXml import QDomDocument
 
-# Rutas (ajustadas con formato correcto)
-ruta_plantilla = r"C:\Users\lady.angulo\Documents\Archivo_Python\plantilla.qpt"
-carpeta_salida = r"C:\Users\lady.angulo\Documents\Archivo_Python"
+# Obtener nombre de usuario del sistema
+usuario = os.getlogin()
 
-# Capa y selección
+# Rutas con nombre de usuario dinámico
+ruta_plantilla = fr"C:\Users\{usuario}\Documents\Archivo_Python\plantilla.qpt"
+carpeta_salida = fr"C:\Users\{usuario}\Documents\Archivo_Python"
+
+# Crear carpeta si no existe
+if not os.path.exists(carpeta_salida):
+    os.makedirs(carpeta_salida)
+
+# Capa activa y entidades seleccionadas
 capa = iface.activeLayer()
 seleccionados = capa.selectedFeatures()
 
 if not seleccionados:
     QMessageBox.warning(None, "Reporte", "⚠️ No hay entidad seleccionada.")
 else:
-    # Crear formulario para editar "observaciones"
+    QMessageBox.information(None, "Vista previa", "👀 Se puede visualizar el reporte del lote seleccionado.")
+    """ # Crear formulario para editar observaciones
     class FormularioObservaciones(QDialog):
         def __init__(self, seleccionados):
             super().__init__()
@@ -81,4 +90,4 @@ else:
             self.accept()
 
     ventana = FormularioObservaciones(seleccionados)
-    ventana.exec_()
+    ventana.exec_() """
