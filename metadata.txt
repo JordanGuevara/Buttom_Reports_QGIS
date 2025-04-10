@@ -1,0 +1,11 @@
+[general]
+name=Composicion Layout
+description=Muestra y abre composiciones del proyecto con Atlas habilitado.
+version=1.0
+qgisMinimumVersion=3.0
+author=TuNombre
+email=tucorreo@ejemplo.com
+icon=icono_reporte.png
+
+[experimental]
+true
