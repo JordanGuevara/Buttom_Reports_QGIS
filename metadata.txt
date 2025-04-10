@@ -5,9 +5,17 @@ description=Este complemento permite seleccionar y abrir composiciones con atlas
 version=1.0
 author=Jordan Guevara
 email=axndr154@gmail.com
-icon=icono_reporte.png
+about=Este complemento permite seleccionar y abrir composiciones con atlas habilitado en QGIS. Facilita la visualización y generación de reportes dentro del software.
+homepage=https://github.com/JordanGuevara
 category=Layout
+icon=icono_reporte.png
 
-[experimental]
-true
+# experimental flag
+experimental=False
+
+# deprecated flag
+deprecated=False
+
+# Tags for the plugin (optional)
+tags=python,atlas,reporte,qgis
 
