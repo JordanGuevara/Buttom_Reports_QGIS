@@ -1,11 +1,13 @@
 [general]
-name=Composicion Layout
-description=Muestra y abre composiciones del proyecto con Atlas habilitado.
-version=1.0
+name=Botón de Reportes QGIS
 qgisMinimumVersion=3.0
-author=TuNombre
-email=tucorreo@ejemplo.com
+description=Este complemento muestra y abre composiciones con atlas habilitado desde un botón.
+version=1.0
+author=Jordan Guevara
+email=axndr154@gmail.com
 icon=icono_reporte.png
+category=Layout
 
 [experimental]
 true
+
