@@ -1,7 +1,7 @@
 [general]
-name=Botón de Reportes QGIS
+name=Boton de Reportes QGIS
 qgisMinimumVersion=3.0
-description=Este complemento muestra y abre composiciones con atlas habilitado desde un botón.
+description=Este complemento muestra y abre composiciones con atlas habilitado desde un boton.
 version=1.0
 author=Jordan Guevara
 email=axndr154@gmail.com
