@@ -1,7 +1,7 @@
 import os
 from qgis.PyQt.QtWidgets import QAction, QMessageBox, QInputDialog
 from qgis.PyQt.QtGui import QIcon
-from qgis.core import QgsProject
+from qgis.core import QgsProject, QgsExpressionContextUtils
 from qgis.utils import iface
 
 class LayoutPlugin:
@@ -58,31 +58,41 @@ class LayoutPlugin:
 
                     self.iface.openLayoutDesigner(layout_obj)
 
-                    suelo_layer = QgsProject.instance().mapLayersByName("clase_suelo")
-                    if suelo_layer:
-                        suelo_layer = suelo_layer[0]
-                        resumen = {}
+                    # -----------------------------------------
+                    # CÁLCULO DEL ÁREA Y GUARDADO EN VARIABLE
+                    # -----------------------------------------
+                    area_total_m2 = feature.geometry().area()
+                    area_total_ha = area_total_m2 / 10000
 
-                        for suelo in suelo_layer.getFeatures():
-                            interseccion = feature.geometry().intersection(suelo.geometry())
-                            if not interseccion.isEmpty():
-                                area_ha = interseccion.area() / 10000
-                                clase = suelo["clase"]  
-                                if clase in resumen:
-                                    resumen[clase] += area_ha
-                                else:
-                                    resumen[clase] = area_ha
-
-                        if resumen:
-                            texto = "Área por clase de suelo:\n"
-                            for clase, area in resumen.items():
-                                texto += f"Clase {clase}: {round(area, 4)} ha\n"
-                            QMessageBox.information(None, "Resumen de clases de suelo", texto)
-                        else:
-                            QMessageBox.information(None, "Sin intersecciones", "El objeto seleccionado no intersecta con clases de suelo.")
+                    if area_total_ha > 1:
+                        resumen = f"Área total: {round(area_total_ha, 4)} ha"
+                        QgsExpressionContextUtils.setProjectVariable(QgsProject.instance(), "resumen_clases", resumen)
                     else:
-                        QMessageBox.warning(None, "Capa no encontrada", "No se encontró la capa 'clase_suelo'.")
+                        # Buscar capa 'clase_suelo'
+                        suelo_layer = QgsProject.instance().mapLayersByName("clase_suelo")
+                        if suelo_layer:
+                            suelo_layer = suelo_layer[0]
+                            resumen_dict = {}
+
+                            for suelo in suelo_layer.getFeatures():
+                                interseccion = feature.geometry().intersection(suelo.geometry())
+                                if not interseccion.isEmpty():
+                                    area_ha = interseccion.area() / 10000
+                                    clase = suelo["clase"]  # Cambia si tu campo tiene otro nombre
+                                    if clase in resumen_dict:
+                                        resumen_dict[clase] += area_ha
+                                    else:
+                                        resumen_dict[clase] = area_ha
+
+                            if resumen_dict:
+                                texto = f"Área total: {round(area_total_ha, 4)} ha\n\nDistribución por clase de suelo:\n"
+                                for clase, area in resumen_dict.items():
+                                    texto += f"Clase {clase}: {round(area, 4)} ha\n"
+                                QgsExpressionContextUtils.setProjectVariable(QgsProject.instance(), "resumen_clases", texto)
+                            else:
+                                QgsExpressionContextUtils.setProjectVariable(QgsProject.instance(), "resumen_clases", "Sin intersección con clases de suelo.")
+                        else:
+                            QgsExpressionContextUtils.setProjectVariable(QgsProject.instance(), "resumen_clases", "Capa 'clase_suelo' no encontrada.")
 
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Ocurrió un error: {str(e)}")
-
