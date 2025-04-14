@@ -21,25 +21,43 @@ class LayoutPlugin:
             self.iface.removeToolBarIcon(self.accion)
 
     def mostrar_composiciones(self):
-        try:
-            manager = QgsProject.instance().layoutManager()
-            layouts = manager.printLayouts()
+    try:
+        layer = self.iface.activeLayer()
+        if not layer or not layer.selectedFeatureCount():
+            QMessageBox.warning(None, "Selecciona una entidad", "Selecciona una entidad en la capa activa.")
+            return
 
-            if not layouts:
-                QMessageBox.information(None, "Composiciones", "No hay composiciones en el proyecto.")
-                return
+        selected_features = layer.selectedFeatures()
+        feature = selected_features[0]
+        gid_valor = feature["gid"]  # Cambia "gid" si usas otro campo
 
-            nombres = [layout.name() for layout in layouts]
-            seleccionado, ok = QInputDialog.getItem(self.iface.mainWindow(), "Seleccionar composición", "Elige una:", nombres, editable=False)
+        # Crear expresión de filtro
+        if isinstance(gid_valor, str):
+            filtro = f'"gid" = \'{gid_valor}\''
+        else:
+            filtro = f'"gid" = {gid_valor}'
 
-            if ok and seleccionado:
-                layout_obj = next((l for l in layouts if l.name() == seleccionado), None)
-                if layout_obj:
-                    # Activar atlas si está disponible
-                    if layout_obj.atlas().enabled():
-                        layout_obj.atlas().setEnabled(True)
-                    self.iface.openLayoutDesigner(layout_obj)
-                else:
-                    QMessageBox.warning(None, "Error", "No se encontró la composición.")
-        except Exception as e:
-            QMessageBox.critical(None, "Error", f"Ocurrió un error: {str(e)}")
+        manager = QgsProject.instance().layoutManager()
+        layouts = manager.printLayouts()
+
+        if not layouts:
+            QMessageBox.information(None, "Composiciones", "No hay composiciones en el proyecto.")
+            return
+
+        nombres = [layout.name() for layout in layouts]
+        seleccionado, ok = QInputDialog.getItem(self.iface.mainWindow(), "Seleccionar composición", "Elige una:", nombres, editable=False)
+
+        if ok and seleccionado:
+            layout_obj = next((l for l in layouts if l.name() == seleccionado), None)
+            if layout_obj:
+                atlas = layout_obj.atlas()
+                atlas.setCoverageLayer(layer)
+                atlas.setFilterFeatures(True)
+                atlas.setFilterExpression(filtro)
+                atlas.setEnabled(True)
+
+                self.iface.openLayoutDesigner(layout_obj)
+            else:
+                QMessageBox.warning(None, "Error", "No se encontró la composición.")
+    except Exception as e:
+        QMessageBox.critical(None, "Error", f"Ocurrió un error: {str(e)}")
