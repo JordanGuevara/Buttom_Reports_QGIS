@@ -21,43 +21,43 @@ class LayoutPlugin:
             self.iface.removeToolBarIcon(self.accion)
 
     def mostrar_composiciones(self):
-    try:
-        layer = self.iface.activeLayer()
-        if not layer or not layer.selectedFeatureCount():
-            QMessageBox.warning(None, "Selecciona una entidad", "Selecciona una entidad en la capa activa.")
-            return
-
-        selected_features = layer.selectedFeatures()
-        feature = selected_features[0]
-        gid_valor = feature["gid"]  # Cambia "gid" si usas otro campo
-
-        # Crear expresión de filtro
-        if isinstance(gid_valor, str):
-            filtro = f'"gid" = \'{gid_valor}\''
-        else:
-            filtro = f'"gid" = {gid_valor}'
-
-        manager = QgsProject.instance().layoutManager()
-        layouts = manager.printLayouts()
-
-        if not layouts:
-            QMessageBox.information(None, "Composiciones", "No hay composiciones en el proyecto.")
-            return
-
-        nombres = [layout.name() for layout in layouts]
-        seleccionado, ok = QInputDialog.getItem(self.iface.mainWindow(), "Seleccionar composición", "Elige una:", nombres, editable=False)
-
-        if ok and seleccionado:
-            layout_obj = next((l for l in layouts if l.name() == seleccionado), None)
-            if layout_obj:
-                atlas = layout_obj.atlas()
-                atlas.setCoverageLayer(layer)
-                atlas.setFilterFeatures(True)
-                atlas.setFilterExpression(filtro)
-                atlas.setEnabled(True)
-
-                self.iface.openLayoutDesigner(layout_obj)
+        try:
+            layer = self.iface.activeLayer()
+            if not layer or not layer.selectedFeatureCount():
+                QMessageBox.warning(None, "Selecciona una entidad", "Selecciona una entidad en la capa activa.")
+                return
+    
+            selected_features = layer.selectedFeatures()
+            feature = selected_features[0]
+            gid_valor = feature["gid"]  # Cambia "gid" si usas otro campo
+    
+            # Crear expresión de filtro
+            if isinstance(gid_valor, str):
+                filtro = f'"gid" = \'{gid_valor}\''
             else:
-                QMessageBox.warning(None, "Error", "No se encontró la composición.")
-    except Exception as e:
-        QMessageBox.critical(None, "Error", f"Ocurrió un error: {str(e)}")
+                filtro = f'"gid" = {gid_valor}'
+    
+            manager = QgsProject.instance().layoutManager()
+            layouts = manager.printLayouts()
+    
+            if not layouts:
+                QMessageBox.information(None, "Composiciones", "No hay composiciones en el proyecto.")
+                return
+    
+            nombres = [layout.name() for layout in layouts]
+            seleccionado, ok = QInputDialog.getItem(self.iface.mainWindow(), "Seleccionar composición", "Elige una:", nombres, editable=False)
+    
+            if ok and seleccionado:
+                layout_obj = next((l for l in layouts if l.name() == seleccionado), None)
+                if layout_obj:
+                    atlas = layout_obj.atlas()
+                    atlas.setCoverageLayer(layer)
+                    atlas.setFilterFeatures(True)
+                    atlas.setFilterExpression(filtro)
+                    atlas.setEnabled(True)
+    
+                    self.iface.openLayoutDesigner(layout_obj)
+                else:
+                    QMessageBox.warning(None, "Error", "No se encontró la composición.")
+        except Exception as e:
+            QMessageBox.critical(None, "Error", f"Ocurrió un error: {str(e)}")
