@@ -58,9 +58,6 @@ class LayoutPlugin:
 
                     self.iface.openLayoutDesigner(layout_obj)
 
-                    # -----------------------------------
-                    # CÁLCULO AUTOMÁTICO DE CLASE DE SUELO
-                    # -----------------------------------
                     suelo_layer = QgsProject.instance().mapLayersByName("clase_suelo")
                     if suelo_layer:
                         suelo_layer = suelo_layer[0]
@@ -70,7 +67,7 @@ class LayoutPlugin:
                             interseccion = feature.geometry().intersection(suelo.geometry())
                             if not interseccion.isEmpty():
                                 area_ha = interseccion.area() / 10000
-                                clase = suelo["clase"]  # Cambiar si el campo tiene otro nombre
+                                clase = suelo["clase"]  
                                 if clase in resumen:
                                     resumen[clase] += area_ha
                                 else:
