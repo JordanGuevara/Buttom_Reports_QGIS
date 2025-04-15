@@ -47,14 +47,17 @@ class LayoutPlugin:
             seleccionado, ok = QInputDialog.getItem(self.iface.mainWindow(), "Seleccionar composición", "Elige una:", nombres, editable=False)
 
             if ok and seleccionado:
+                # Cerrar el layout actual si ya está abierto
                 layout_obj = next((l for l in layouts if l.name() == seleccionado), None)
                 if layout_obj:
+                    # Reiniciar el filtro y la información del Atlas
                     atlas = layout_obj.atlas()
                     atlas.setCoverageLayer(layer)
                     atlas.setFilterFeatures(True)
                     atlas.setFilterExpression(filtro)
                     atlas.setEnabled(True)
 
+                    # Abre el layout con los nuevos datos
                     self.iface.openLayoutDesigner(layout_obj)
 
                     # -----------------------------
