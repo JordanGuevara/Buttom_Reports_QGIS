@@ -58,63 +58,55 @@ class LayoutPlugin:
                     self.iface.openLayoutDesigner(layout_obj)
 
                     # -----------------------------
-                    # Cálculo del área e intersección
+                    # Cálculo del área e intersecciones
                     # -----------------------------
-                    area_total_m2 = feature.geometry().area()
-                    area_total_ha = area_total_m2 / 10000
+                    texto = ""
 
-                    if area_total_ha > 1:
-                        QMessageBox.information(None, "Área total", f"Área del lote: {round(area_total_ha, 4)} ha")
+                    # --- CLASE SUELO ---
+                    clase_layer = QgsProject.instance().mapLayersByName("clase_suelo")
+                    if clase_layer:
+                        clase_layer = clase_layer[0]
+                        resumen_clase = {}
+
+                        for suelo in clase_layer.getFeatures():
+                            inter = feature.geometry().intersection(suelo.geometry())
+                            if not inter.isEmpty():
+                                area = inter.area() / 10000
+                                clase = suelo["clase"]
+                                resumen_clase[clase] = resumen_clase.get(clase, 0) + area
+
+                        if resumen_clase:
+                            texto += "Distribución por clase de suelo:\n"
+                            for c, a in resumen_clase.items():
+                                texto += f"  Clase {c}: {round(a, 4)} ha\n"
+                        else:
+                            texto += "No hay intersección con clase de suelo.\n"
                     else:
-                        texto = f"Área total: {round(area_total_ha, 4)} ha\n\n"
+                        texto += "Capa 'clase_suelo' no encontrada.\n"
 
-                        # --- CLASE SUELO ---
-                        clase_layer = QgsProject.instance().mapLayersByName("clase_suelo")
-                        if clase_layer:
-                            clase_layer = clase_layer[0]
-                            resumen_clase = {}
+                    # --- INFLUENCIA ---
+                    influencia_layer = QgsProject.instance().mapLayersByName("influencia")
+                    if influencia_layer:
+                        influencia_layer = influencia_layer[0]
+                        resumen_influencia = {}
 
-                            for suelo in clase_layer.getFeatures():
-                                inter = feature.geometry().intersection(suelo.geometry())
-                                if not inter.isEmpty():
-                                    area = inter.area() / 10000
-                                    clase = suelo["clase"]
-                                    resumen_clase[clase] = resumen_clase.get(clase, 0) + area
+                        for inf in influencia_layer.getFeatures():
+                            inter = feature.geometry().intersection(inf.geometry())
+                            if not inter.isEmpty():
+                                area = inter.area() / 10000
+                                tipo = inf["influencia"]
+                                resumen_influencia[tipo] = resumen_influencia.get(tipo, 0) + area
 
-                            if resumen_clase:
-                                texto += "Distribución por clase de suelo:\n"
-                                for c, a in resumen_clase.items():
-                                    texto += f"  Clase {c}: {round(a, 4)} ha\n"
-                            else:
-                                texto += "No hay intersección con clase de suelo.\n"
+                        if resumen_influencia:
+                            texto += "\nDistribución por influencia:\n"
+                            for t, a in resumen_influencia.items():
+                                texto += f"  {t}: {round(a, 4)} ha\n"
                         else:
-                            texto += "Capa 'clase_suelo' no encontrada.\n"
+                            texto += "\nNo hay intersección con influencia.\n"
+                    else:
+                        texto += "\nCapa 'influencia' no encontrada.\n"
 
-                        # --- INFLUENCIA ---
-                        influencia_layer = QgsProject.instance().mapLayersByName("influencia")
-                        if influencia_layer:
-                            influencia_layer = influencia_layer[0]
-                            resumen_influencia = {}
-
-                            for inf in influencia_layer.getFeatures():
-                                inter = feature.geometry().intersection(inf.geometry())
-                                if not inter.isEmpty():
-                                    area = inter.area() / 10000
-                                    tipo = inf["influencia"]
-                                    resumen_influencia[tipo] = resumen_influencia.get(tipo, 0) + area
-
-                            if resumen_influencia:
-                                texto += "\nDistribución por influencia:\n"
-                                for t, a in resumen_influencia.items():
-                                    texto += f"  {t}: {round(a, 4)} ha\n"
-                            else:
-                                texto += "\nNo hay intersección con influencia.\n"
-                        else:
-                            texto += "\nCapa 'influencia' no encontrada.\n"
-
-                        QMessageBox.information(None, "Distribución de áreas", texto)
+                    QMessageBox.information(None, "Resumen de intersecciones", texto)
 
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Ocurrió un error: {str(e)}")
-
-
