@@ -87,7 +87,7 @@ class LayoutPlugin:
                                     resumen_clase[clase] = area
 
                         if mostrar_area_total:
-                            texto += f"Área total del lote: {round(feature.geometry().area() / 10000, 4)} ha\n"
+                            texto += f"Área total del lote(suelo): {round(feature.geometry().area() / 10000, 4)} ha\n"
                         else:
                             if resumen_clase:
                                 texto += "Distribución por clase de suelo:\n"
@@ -123,7 +123,7 @@ class LayoutPlugin:
                                     resumen_influencia[tipo] = area
 
                         if mostrar_area_total:
-                            texto += f"Área total del lote: {round(feature.geometry().area() / 10000, 4)} ha\n"
+                            texto += f"Área total del lote(influencia): {round(feature.geometry().area() / 10000, 4)} ha\n"
                         else:
                             if resumen_influencia:
                                 texto += "\nDistribución por influencia:\n"
