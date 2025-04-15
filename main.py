@@ -32,7 +32,7 @@ class LayoutPlugin:
             gid_valor = feature["gid"]
 
             if isinstance(gid_valor, str):
-                filtro = f'"gid" = \'{gid_valor}\'' 
+                filtro = f'"gid" = \'{gid_valor}\''
             else:
                 filtro = f'"gid" = {gid_valor}'
 
@@ -57,84 +57,69 @@ class LayoutPlugin:
 
                     self.iface.openLayoutDesigner(layout_obj)
 
-                    # -----------------------------
-                    # Cálculo del área e intersecciones
-                    # -----------------------------
-                    texto = ""
+                    # ---------------------------------------
+                    # Cálculo del área e intersecciones (CLASE SUELO + INFLUENCIA)
+                    # Y GUARDADO EN VARIABLES DEL LAYOUT
+                    # ---------------------------------------
+                    contexto = layout_obj.reportContext()
+                    contexto.setVariable("datos_clase_suelo", "")
+                    contexto.setVariable("datos_influencia", "")
 
                     # --- CLASE SUELO ---
                     clase_layer = QgsProject.instance().mapLayersByName("clase_suelo")
                     if clase_layer:
                         clase_layer = clase_layer[0]
                         resumen_clase = {}
-                        mostrar_area_total = False  # Flag para saber si alguna intersección es menor a 1 ha
+                        mostrar_area_total = False
 
                         for suelo in clase_layer.getFeatures():
                             inter = feature.geometry().intersection(suelo.geometry())
                             if not inter.isEmpty():
-                                area = inter.area() / 10000  # Convertimos a hectáreas
+                                area = inter.area() / 10000  # ha
                                 clase = suelo["clase"]
-
-                                # Si el área es menor a 1 ha, no sumar ni mostrar, solo el área total
                                 if area < 1:
                                     mostrar_area_total = True
-                                    break  # Salir si alguna intersección es menor a 1 ha
-
-                                # Si el área es mayor o igual a 1 ha, acumulamos normalmente
-                                if clase in resumen_clase:
-                                    resumen_clase[clase] += area
-                                else:
-                                    resumen_clase[clase] = area
+                                    break
+                                resumen_clase[clase] = resumen_clase.get(clase, 0) + area
 
                         if mostrar_area_total:
-                            texto += f"Área total del lote(suelo): {round(feature.geometry().area() / 10000, 4)} ha\n"
+                            contexto.setVariable("datos_clase_suelo", f"{round(feature.geometry().area() / 10000, 4)} ha (total)")
                         else:
                             if resumen_clase:
-                                texto += "Distribución por clase de suelo:\n"
-                                for c, a in resumen_clase.items():
-                                    texto += f"  Clase {c}: {round(a, 4)} ha\n"
+                                texto_clase = "\n".join([f"Clase {c}: {round(a, 4)} ha" for c, a in resumen_clase.items()])
+                                contexto.setVariable("datos_clase_suelo", texto_clase)
                             else:
-                                texto += "No hay intersección con clase de suelo.\n"
+                                contexto.setVariable("datos_clase_suelo", "No hay intersección con clase de suelo.")
                     else:
-                        texto += "Capa 'clase_suelo' no encontrada.\n"
+                        contexto.setVariable("datos_clase_suelo", "Capa 'clase_suelo' no encontrada.")
 
                     # --- INFLUENCIA ---
                     influencia_layer = QgsProject.instance().mapLayersByName("influencia")
                     if influencia_layer:
                         influencia_layer = influencia_layer[0]
                         resumen_influencia = {}
-                        mostrar_area_total = False  # Flag para saber si alguna intersección es menor a 1 ha
+                        mostrar_area_total = False
 
                         for inf in influencia_layer.getFeatures():
                             inter = feature.geometry().intersection(inf.geometry())
                             if not inter.isEmpty():
-                                area = inter.area() / 10000  # Convertimos a hectáreas
+                                area = inter.area() / 10000  # ha
                                 tipo = inf["influencia"]
-
-                                # Si el área es menor a 1 ha, no sumar ni mostrar, solo el área total
                                 if area < 1:
                                     mostrar_area_total = True
-                                    break 
-
-                                # Si el área es mayor o igual a 1 ha, acumulamos normalmente
-                                if tipo in resumen_influencia:
-                                    resumen_influencia[tipo] += area
-                                else:
-                                    resumen_influencia[tipo] = area
+                                    break
+                                resumen_influencia[tipo] = resumen_influencia.get(tipo, 0) + area
 
                         if mostrar_area_total:
-                            texto += f"Área total del lote(influencia): {round(feature.geometry().area() / 10000, 4)} ha\n"
+                            contexto.setVariable("datos_influencia", f"{round(feature.geometry().area() / 10000, 4)} ha (total)")
                         else:
                             if resumen_influencia:
-                                texto += "\nDistribución por influencia:\n"
-                                for t, a in resumen_influencia.items():
-                                    texto += f"  {t}: {round(a, 4)} ha\n"
+                                texto_influencia = "\n".join([f"{t}: {round(a, 4)} ha" for t, a in resumen_influencia.items()])
+                                contexto.setVariable("datos_influencia", texto_influencia)
                             else:
-                                texto += "\nNo hay intersección con influencia.\n"
+                                contexto.setVariable("datos_influencia", "No hay intersección con influencia.")
                     else:
-                        texto += "\nCapa 'influencia' no encontrada.\n"
-
-                    QMessageBox.information(None, "Resumen de intersecciones", texto)
+                        contexto.setVariable("datos_influencia", "Capa 'influencia' no encontrada.")
 
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Ocurrió un error: {str(e)}")
