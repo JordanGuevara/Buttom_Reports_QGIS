@@ -64,11 +64,14 @@ class LayoutPlugin:
                     atlas.setFilterExpression(filtro)
                     atlas.setEnabled(True)
 
-                    # Activar intersección con extensión del atlas solo si se reporta por caso
+                    # Si se selecciona "Todos los objetos del mismo caso", aseguramos que el filtro de Atlas esté activo
                     if eleccion == "Todos los objetos del mismo caso":
-                        atlas.setFilterByAtlasIntersection(True)
+                        # Aquí, con el filtro activado, el Atlas aplicará las características dentro de la extensión
+                        # de la composición para esos objetos.
+                        atlas.setEnabled(True)
                     else:
-                        atlas.setFilterByAtlasIntersection(False)
+                        # Si no, deshabilitamos el filtro
+                        atlas.setEnabled(False)
 
                     self.iface.openLayoutDesigner(layout_obj)
 
