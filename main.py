@@ -73,14 +73,18 @@ class LayoutPlugin:
                             if not inter.isEmpty():
                                 area = inter.area() / 10000
                                 clase = suelo["clase"]
-                                
+
                                 # Verificamos si la intersección es menor a 1 ha
                                 if area < 1:
                                     # Si es menor a 1 ha, sumamos a la clase existente que tenga área mayor a 1 ha
                                     if clase in resumen_clase and resumen_clase[clase] >= 1:
                                         resumen_clase[clase] += area
                                     else:
-                                        resumen_clase[clase] = area
+                                        # Si no existe una clase con área mayor o igual a 1 ha, inicializamos el valor
+                                        if clase not in resumen_clase:
+                                            resumen_clase[clase] = area
+                                        else:
+                                            resumen_clase[clase] += area
                                 else:
                                     resumen_clase[clase] = resumen_clase.get(clase, 0) + area
 
@@ -104,14 +108,18 @@ class LayoutPlugin:
                             if not inter.isEmpty():
                                 area = inter.area() / 10000
                                 tipo = inf["influencia"]
-                                
+
                                 # Verificamos si la intersección es menor a 1 ha
                                 if area < 1:
                                     # Si es menor a 1 ha, sumamos a la influencia existente que tenga área mayor a 1 ha
                                     if tipo in resumen_influencia and resumen_influencia[tipo] >= 1:
                                         resumen_influencia[tipo] += area
                                     else:
-                                        resumen_influencia[tipo] = area
+                                        # Si no existe una influencia con área mayor o igual a 1 ha, inicializamos el valor
+                                        if tipo not in resumen_influencia:
+                                            resumen_influencia[tipo] = area
+                                        else:
+                                            resumen_influencia[tipo] += area
                                 else:
                                     resumen_influencia[tipo] = resumen_influencia.get(tipo, 0) + area
 
