@@ -114,7 +114,7 @@ class LayoutPlugin:
                                 # Si el área es menor a 1 ha, no sumar ni mostrar, solo el área total
                                 if area < 1:
                                     mostrar_area_total = True
-                                    break  # Salir si alguna intersección es menor a 1 ha
+                                    break 
 
                                 # Si el área es mayor o igual a 1 ha, acumulamos normalmente
                                 if tipo in resumen_influencia:
