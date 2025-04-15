@@ -71,22 +71,21 @@ class LayoutPlugin:
                         for suelo in clase_layer.getFeatures():
                             inter = feature.geometry().intersection(suelo.geometry())
                             if not inter.isEmpty():
-                                area = inter.area() / 10000
+                                area = inter.area() / 10000  # Convertimos a hectáreas
                                 clase = suelo["clase"]
 
-                                # Verificamos si la intersección es menor a 1 ha
+                                # Acumular el área, si es menor a 1 ha, se suman en total
                                 if area < 1:
-                                    # Si es menor a 1 ha, sumamos a la clase existente que tenga área mayor a 1 ha
-                                    if clase in resumen_clase and resumen_clase[clase] >= 1:
+                                    if clase in resumen_clase:
                                         resumen_clase[clase] += area
                                     else:
-                                        # Si no existe una clase con área mayor o igual a 1 ha, inicializamos el valor
-                                        if clase not in resumen_clase:
-                                            resumen_clase[clase] = area
-                                        else:
-                                            resumen_clase[clase] += area
+                                        resumen_clase[clase] = area
                                 else:
-                                    resumen_clase[clase] = resumen_clase.get(clase, 0) + area
+                                    # Si el área es mayor o igual a 1 ha, se agrega sin cambio
+                                    if clase in resumen_clase:
+                                        resumen_clase[clase] += area
+                                    else:
+                                        resumen_clase[clase] = area
 
                         if resumen_clase:
                             texto += "Distribución por clase de suelo:\n"
@@ -106,22 +105,21 @@ class LayoutPlugin:
                         for inf in influencia_layer.getFeatures():
                             inter = feature.geometry().intersection(inf.geometry())
                             if not inter.isEmpty():
-                                area = inter.area() / 10000
+                                area = inter.area() / 10000  # Convertimos a hectáreas
                                 tipo = inf["influencia"]
 
-                                # Verificamos si la intersección es menor a 1 ha
+                                # Acumular el área, si es menor a 1 ha, se suman en total
                                 if area < 1:
-                                    # Si es menor a 1 ha, sumamos a la influencia existente que tenga área mayor a 1 ha
-                                    if tipo in resumen_influencia and resumen_influencia[tipo] >= 1:
+                                    if tipo in resumen_influencia:
                                         resumen_influencia[tipo] += area
                                     else:
-                                        # Si no existe una influencia con área mayor o igual a 1 ha, inicializamos el valor
-                                        if tipo not in resumen_influencia:
-                                            resumen_influencia[tipo] = area
-                                        else:
-                                            resumen_influencia[tipo] += area
+                                        resumen_influencia[tipo] = area
                                 else:
-                                    resumen_influencia[tipo] = resumen_influencia.get(tipo, 0) + area
+                                    # Si el área es mayor o igual a 1 ha, se agrega sin cambio
+                                    if tipo in resumen_influencia:
+                                        resumen_influencia[tipo] += area
+                                    else:
+                                        resumen_influencia[tipo] = area
 
                         if resumen_influencia:
                             texto += "\nDistribución por influencia:\n"
