@@ -67,6 +67,7 @@ class LayoutPlugin:
                     if clase_layer:
                         clase_layer = clase_layer[0]
                         resumen_clase = {}
+                        mostrar_area_total = False  # Flag para saber si alguna intersección es menor a 1 ha
 
                         for suelo in clase_layer.getFeatures():
                             inter = feature.geometry().intersection(suelo.geometry())
@@ -74,25 +75,26 @@ class LayoutPlugin:
                                 area = inter.area() / 10000  # Convertimos a hectáreas
                                 clase = suelo["clase"]
 
-                                # Acumular el área, si es menor a 1 ha, se suman en total
+                                # Si el área es menor a 1 ha, no sumar ni mostrar, solo el área total
                                 if area < 1:
-                                    if clase in resumen_clase:
-                                        resumen_clase[clase] += area
-                                    else:
-                                        resumen_clase[clase] = area
-                                else:
-                                    # Si el área es mayor o igual a 1 ha, se agrega sin cambio
-                                    if clase in resumen_clase:
-                                        resumen_clase[clase] += area
-                                    else:
-                                        resumen_clase[clase] = area
+                                    mostrar_area_total = True
+                                    break  # Salir si alguna intersección es menor a 1 ha
 
-                        if resumen_clase:
-                            texto += "Distribución por clase de suelo:\n"
-                            for c, a in resumen_clase.items():
-                                texto += f"  Clase {c}: {round(a, 4)} ha\n"
+                                # Si el área es mayor o igual a 1 ha, acumulamos normalmente
+                                if clase in resumen_clase:
+                                    resumen_clase[clase] += area
+                                else:
+                                    resumen_clase[clase] = area
+
+                        if mostrar_area_total:
+                            texto += f"Área total del lote: {round(feature.geometry().area() / 10000, 4)} ha\n"
                         else:
-                            texto += "No hay intersección con clase de suelo.\n"
+                            if resumen_clase:
+                                texto += "Distribución por clase de suelo:\n"
+                                for c, a in resumen_clase.items():
+                                    texto += f"  Clase {c}: {round(a, 4)} ha\n"
+                            else:
+                                texto += "No hay intersección con clase de suelo.\n"
                     else:
                         texto += "Capa 'clase_suelo' no encontrada.\n"
 
@@ -101,6 +103,7 @@ class LayoutPlugin:
                     if influencia_layer:
                         influencia_layer = influencia_layer[0]
                         resumen_influencia = {}
+                        mostrar_area_total = False  # Flag para saber si alguna intersección es menor a 1 ha
 
                         for inf in influencia_layer.getFeatures():
                             inter = feature.geometry().intersection(inf.geometry())
@@ -108,25 +111,26 @@ class LayoutPlugin:
                                 area = inter.area() / 10000  # Convertimos a hectáreas
                                 tipo = inf["influencia"]
 
-                                # Acumular el área, si es menor a 1 ha, se suman en total
+                                # Si el área es menor a 1 ha, no sumar ni mostrar, solo el área total
                                 if area < 1:
-                                    if tipo in resumen_influencia:
-                                        resumen_influencia[tipo] += area
-                                    else:
-                                        resumen_influencia[tipo] = area
-                                else:
-                                    # Si el área es mayor o igual a 1 ha, se agrega sin cambio
-                                    if tipo in resumen_influencia:
-                                        resumen_influencia[tipo] += area
-                                    else:
-                                        resumen_influencia[tipo] = area
+                                    mostrar_area_total = True
+                                    break  # Salir si alguna intersección es menor a 1 ha
 
-                        if resumen_influencia:
-                            texto += "\nDistribución por influencia:\n"
-                            for t, a in resumen_influencia.items():
-                                texto += f"  {t}: {round(a, 4)} ha\n"
+                                # Si el área es mayor o igual a 1 ha, acumulamos normalmente
+                                if tipo in resumen_influencia:
+                                    resumen_influencia[tipo] += area
+                                else:
+                                    resumen_influencia[tipo] = area
+
+                        if mostrar_area_total:
+                            texto += f"Área total del lote: {round(feature.geometry().area() / 10000, 4)} ha\n"
                         else:
-                            texto += "\nNo hay intersección con influencia.\n"
+                            if resumen_influencia:
+                                texto += "\nDistribución por influencia:\n"
+                                for t, a in resumen_influencia.items():
+                                    texto += f"  {t}: {round(a, 4)} ha\n"
+                            else:
+                                texto += "\nNo hay intersección con influencia.\n"
                     else:
                         texto += "\nCapa 'influencia' no encontrada.\n"
 
