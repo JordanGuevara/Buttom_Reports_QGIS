@@ -41,9 +41,9 @@ class LayoutPlugin:
                 filtro = f'"gid" = {valor}' if isinstance(valor, int) else f'"gid" = \'{valor}\''
                 features_a_reportar = [feature]
             else:
-                caso_id = feature["caso_id"]
-                filtro = f'"caso_id" = {caso_id}' if isinstance(caso_id, int) else f'"caso_id" = \'{caso_id}\''
-                features_a_reportar = [f for f in layer.getFeatures() if f["caso_id"] == caso_id]
+                caso_id = feature["caso"]
+                filtro = f'"caso" = {caso_id}' if isinstance(caso_id, int) else f'"caso" = \'{caso_id}\''
+                features_a_reportar = [f for f in layer.getFeatures() if f["caso"] == caso_id]
 
             manager = QgsProject.instance().layoutManager()
             layouts = manager.printLayouts()
