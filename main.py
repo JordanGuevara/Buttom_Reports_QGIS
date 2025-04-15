@@ -101,7 +101,7 @@ class LayoutPlugin:
                                 for c, a in resumen_clase.items():
                                     texto += f"  Clase {c}: {round(a, 4)} ha\n"
                                 interseccion_hecha = True
-
+                    QMessageBox.information(None, "Resumen de intersecciones", texto)
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Ocurrió un error: {str(e)}")
 
