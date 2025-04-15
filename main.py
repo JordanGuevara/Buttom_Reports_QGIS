@@ -1,5 +1,5 @@
 import os
-from qgis.PyQt.QtWidgets import QAction, QMessageBox, QInputDialog, QDialog, QVBoxLayout, QPlainTextEdit, QPushButton
+from qgis.PyQt.QtWidgets import QAction, QMessageBox, QInputDialog
 from qgis.PyQt.QtGui import QIcon
 from qgis.core import QgsProject
 from qgis.utils import iface
@@ -19,24 +19,6 @@ class LayoutPlugin:
     def unload(self):
         if self.accion:
             self.iface.removeToolBarIcon(self.accion)
-
-    def mostrar_resumen(self, texto):
-        dialog = QDialog()
-        dialog.setWindowTitle("Resumen de intersecciones")
-        dialog.setMinimumSize(450, 300)
-
-        layout = QVBoxLayout()
-        text_edit = QPlainTextEdit()
-        text_edit.setPlainText(texto)
-        text_edit.setReadOnly(True)
-        layout.addWidget(text_edit)
-
-        btn_cerrar = QPushButton("Cerrar")
-        btn_cerrar.clicked.connect(dialog.accept)
-        layout.addWidget(btn_cerrar)
-
-        dialog.setLayout(layout)
-        dialog.exec_()
 
     def mostrar_composiciones(self):
         try:
@@ -124,9 +106,7 @@ class LayoutPlugin:
                     else:
                         texto += "\nCapa 'influencia' no encontrada.\n"
 
-                    # Mostrar el resumen en un QDialog en lugar de QMessageBox
-                    self.mostrar_resumen(texto)
+                    QMessageBox.information(None, "Resumen de intersecciones", texto)
 
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Ocurrió un error: {str(e)}")
-
