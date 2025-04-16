@@ -8,8 +8,6 @@ class LayoutPlugin:
     def __init__(self, iface):
         self.iface = iface
         self.accion = None
-        self.ultimo_layout_abierto = None  # 👈 Control para evitar reabrir inmediatamente
-
         self.icono_path = os.path.join(os.path.dirname(__file__), "icono_reporte.png")
 
     def initGui(self):
@@ -33,10 +31,7 @@ class LayoutPlugin:
             feature = selected_features[0]
             gid_valor = feature["gid"]
 
-            if isinstance(gid_valor, str):
-                filtro = f'"gid" = \'{gid_valor}\''
-            else:
-                filtro = f'"gid" = {gid_valor}'
+            filtro = f'"gid" = \'{gid_valor}\'' if isinstance(gid_valor, str) else f'"gid" = {gid_valor}'
 
             manager = QgsProject.instance().layoutManager()
             layouts = manager.printLayouts()
@@ -49,21 +44,17 @@ class LayoutPlugin:
             seleccionado, ok = QInputDialog.getItem(self.iface.mainWindow(), "Seleccionar composición", "Elige una:", nombres, editable=False)
 
             if ok and seleccionado:
-                # 👇 Evita reabrir la misma composición inmediatamente
-                if self.ultimo_layout_abierto == seleccionado:
-                    QMessageBox.information(None, "Ya abierto", f"La composición '{seleccionado}' ya fue abierta.")
-                    return
-
                 layout_obj = next((l for l in layouts if l.name() == seleccionado), None)
                 if layout_obj:
+                    # Actualizar el atlas antes de abrir
                     atlas = layout_obj.atlas()
                     atlas.setCoverageLayer(layer)
                     atlas.setFilterFeatures(True)
                     atlas.setFilterExpression(filtro)
                     atlas.setEnabled(True)
 
+                    # Abre el layout — esto "refresca" la ventana aunque esté abierta
                     self.iface.openLayoutDesigner(layout_obj)
-                    self.ultimo_layout_abierto = seleccionado  # 👈 Marca el último abierto
 
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Ocurrió un error: {str(e)}")
