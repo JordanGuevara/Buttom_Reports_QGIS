@@ -1,4 +1,4 @@
-<Layout worldFileMap="{f16aa5df-2699-46b6-b25b-e65c4faa966f}" printResolution="300" units="mm" name="REPORTE_V2">
+<Layout worldFileMap="{f16aa5df-2699-46b6-b25b-e65c4faa966f}" printResolution="300" units="mm" name="REPORTE_V4">
  <Snapper snapToItems="1" tolerance="5" snapToGrid="0" snapToGuides="1"/>
  <Grid offsetY="0" resolution="10" resUnits="mm" offsetUnits="mm" offsetX="0"/>
  <PageCollection>
@@ -33,7 +33,7 @@
     </data_defined_properties>
    </layer>
   </symbol>
-  <LayoutItem referencePoint="0" positionOnPage="0,0,mm" blendMode="0" positionLock="false" opacity="1" zValue="0" groupUuid="" size="186.9,289.969,mm" templateUuid="{e5098772-0997-487d-bfc9-e36eee258c94}" outlineWidthM="0.3,mm" uuid="{e5098772-0997-487d-bfc9-e36eee258c94}" frameJoinStyle="miter" itemRotation="0" id="" frame="false" excludeFromExports="0" background="true" visibility="1" position="0,0,mm" type="65638">
+  <LayoutItem referencePoint="0" positionOnPage="0,0,mm" blendMode="0" positionLock="false" opacity="1" zValue="0" groupUuid="" size="186.9,289.969,mm" templateUuid="{e4ef4a1c-01bf-4f1e-970a-6bac404e10c1}" outlineWidthM="0.3,mm" uuid="{e4ef4a1c-01bf-4f1e-970a-6bac404e10c1}" frameJoinStyle="miter" itemRotation="0" id="" frame="false" excludeFromExports="0" background="true" visibility="1" position="0,0,mm" type="65638">
    <FrameColor red="0" green="0" alpha="255" blue="0"/>
    <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
    <LayoutObject>
@@ -82,7 +82,7 @@
   </LayoutItem>
   <GuideCollection visible="1"/>
  </PageCollection>
- <LayoutItem referencePoint="0" positionOnPage="2.75,248.31,mm" sectionWidth="181.4" blendMode="0" positionLock="false" sectionX="0" opacity="1" zValue="16" groupUuid="" sectionY="0" size="181.4,41.6589,mm" templateUuid="{02e90b9a-2413-47e8-97bb-c34c3a8f271d}" outlineWidthM="0.3,mm" uuid="{02e90b9a-2413-47e8-97bb-c34c3a8f271d}" frameJoinStyle="miter" itemRotation="0" multiFrame="{20d2cd22-94f1-4207-991b-028d4962dde0}" multiFrameTemplateUuid="{20d2cd22-94f1-4207-991b-028d4962dde0}" id="166" frame="false" sectionHeight="41.6589" hidePageIfEmpty="0" excludeFromExports="0" hideBackgroundIfEmpty="0" background="false" visibility="1" position="2.75,248.31,mm" type="65647">
+ <LayoutItem referencePoint="0" positionOnPage="2.75,248.31,mm" sectionWidth="181.4" blendMode="0" positionLock="false" sectionX="0" opacity="1" zValue="16" groupUuid="" sectionY="0" size="181.4,41.6589,mm" templateUuid="{b2168ee2-0023-44a8-9edc-39c74590ebf0}" outlineWidthM="0.3,mm" uuid="{b2168ee2-0023-44a8-9edc-39c74590ebf0}" frameJoinStyle="miter" itemRotation="0" multiFrame="{20d2cd22-94f1-4207-991b-028d4962dde0}" multiFrameTemplateUuid="{20d2cd22-94f1-4207-991b-028d4962dde0}" id="166" frame="false" sectionHeight="41.6589" hidePageIfEmpty="0" excludeFromExports="0" hideBackgroundIfEmpty="0" background="false" visibility="1" position="2.75,248.31,mm" type="65647">
   <FrameColor red="0" green="0" alpha="255" blue="0"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
@@ -98,23 +98,7 @@
    </customproperties>
   </LayoutObject>
  </LayoutItem>
- <LayoutItem referencePoint="0" positionOnPage="2.75,248.31,mm" sectionWidth="181.4" blendMode="0" positionLock="false" sectionX="0" opacity="1" zValue="16" groupUuid="" sectionY="0" size="181.4,41.6589,mm" templateUuid="{02e90b9a-2413-47e8-97bb-c34c3a8f271d}" outlineWidthM="0.3,mm" uuid="{02e90b9a-2413-47e8-97bb-c34c3a8f271d}" frameJoinStyle="miter" itemRotation="0" multiFrame="{20d2cd22-94f1-4207-991b-028d4962dde0}" multiFrameTemplateUuid="{20d2cd22-94f1-4207-991b-028d4962dde0}" id="166" frame="false" sectionHeight="41.6589" hidePageIfEmpty="0" excludeFromExports="0" hideBackgroundIfEmpty="0" background="false" visibility="1" position="2.75,248.31,mm" type="65647">
-  <FrameColor red="0" green="0" alpha="255" blue="0"/>
-  <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
-  <LayoutObject>
-   <dataDefinedProperties>
-    <Option type="Map">
-     <Option value="" type="QString" name="name"/>
-     <Option name="properties"/>
-     <Option value="collection" type="QString" name="type"/>
-    </Option>
-   </dataDefinedProperties>
-   <customproperties>
-    <Option/>
-   </customproperties>
-  </LayoutObject>
- </LayoutItem>
- <LayoutItem referencePoint="0" positionOnPage="143.332,42.7242,mm" marginY="0" blendMode="0" positionLock="true" opacity="1" zValue="15" groupUuid="" halign="8" size="12.4493,3.48191,mm" templateUuid="{31b71f91-a51d-46bd-ae7f-ea3b9c5c0547}" outlineWidthM="0.3,mm" uuid="{31b71f91-a51d-46bd-ae7f-ea3b9c5c0547}" frameJoinStyle="miter" itemRotation="0" valign="32" id="" frame="false" excludeFromExports="0" background="false" visibility="1" htmlState="0" position="143.332,42.7242,mm" labelText="Ubicación" marginX="0" type="65641">
+ <LayoutItem referencePoint="0" positionOnPage="143.332,42.7242,mm" marginY="0" blendMode="0" positionLock="true" opacity="1" zValue="15" groupUuid="" halign="8" size="12.4493,3.48191,mm" templateUuid="{1740c5fe-9356-43de-a4a0-3a193339c112}" outlineWidthM="0.3,mm" uuid="{1740c5fe-9356-43de-a4a0-3a193339c112}" frameJoinStyle="miter" itemRotation="0" valign="32" id="" frame="false" excludeFromExports="0" background="false" visibility="1" htmlState="0" position="143.332,42.7242,mm" labelText="Ubicación" marginX="0" type="65641">
   <FrameColor red="0" green="0" alpha="255" blue="0"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
@@ -176,7 +160,7 @@
    </dd_properties>
   </text-style>
  </LayoutItem>
- <LayoutItem referencePoint="0" positionOnPage="142.15,40.111,mm" blendMode="0" positionLock="false" mapRotation="0" opacity="1" zValue="14" groupUuid="" size="43.8,62.8,mm" templateUuid="{f16aa5df-2699-46b6-b25b-e65c4faa966f}" drawCanvasItems="true" outlineWidthM="0.2,mm" keepLayerSet="true" uuid="{f16aa5df-2699-46b6-b25b-e65c4faa966f}" frameJoinStyle="miter" itemRotation="0" followPresetName="" id="Mapa_de_Ubicacion" frame="true" labelMargin="0,mm" excludeFromExports="0" followPreset="false" enableZRange="0" background="true" visibility="1" isTemporal="0" position="142.15,40.111,mm" mapFlags="0" type="65639">
+ <LayoutItem referencePoint="0" positionOnPage="142.15,40.111,mm" blendMode="0" positionLock="false" mapRotation="0" opacity="1" zValue="14" groupUuid="" size="43.8,62.8,mm" templateUuid="{fc12977b-c2a1-4451-9cb0-9c27b06b9a37}" drawCanvasItems="true" outlineWidthM="0.2,mm" keepLayerSet="true" uuid="{fc12977b-c2a1-4451-9cb0-9c27b06b9a37}" frameJoinStyle="miter" itemRotation="0" followPresetName="" id="Mapa_de_Ubicacion" frame="true" labelMargin="0,mm" excludeFromExports="0" followPreset="false" enableZRange="0" background="true" visibility="1" isTemporal="0" position="142.15,40.111,mm" mapFlags="0" type="65639">
   <FrameColor red="79" green="79" alpha="255" blue="79"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
@@ -1231,7 +1215,7 @@ def my_form_open(dialog, layer, feature):
     </qgis>
    </LayerStyle>
   </LayerStyles>
-  <ComposerMapOverview centered="0" inverted="0" show="1" position="4" stackingLayerName="lote_rural" stackingLayerProvider="postgres" name="ubicacion" stackingLayerSource="dbname='gadmsd' host=172.16.3.144 port=5432 user='postgres' sslmode=disable key='gid' srid=32717 type=MultiPolygon checkPrimaryKeyUnicity='1' table=&quot;geomatica&quot;.&quot;lote_rural&quot; (geom)" blendMode="0" uuid="{1c329560-c824-4c7a-a11b-fad4ad3e8a9f}" frameMap="{4fbc0859-c89e-41e6-8dfe-d8001acae302}" stackingLayer="lote_rural_6e763450_9ca4_4f26_b749_213f05128410">
+  <ComposerMapOverview centered="0" inverted="0" show="1" position="4" stackingLayerName="lote_rural" stackingLayerProvider="postgres" name="ubicacion" stackingLayerSource="dbname='gadmsd' host=172.16.3.144 port=5432 user='postgres' sslmode=disable key='gid' srid=32717 type=MultiPolygon checkPrimaryKeyUnicity='1' table=&quot;geomatica&quot;.&quot;lote_rural&quot; (geom)" blendMode="0" uuid="{1c329560-c824-4c7a-a11b-fad4ad3e8a9f}" frameMap="{01a8e909-f2a9-457b-a18e-fdc61d7742a5}" stackingLayer="lote_rural_6e763450_9ca4_4f26_b749_213f05128410">
    <symbol is_animated="0" force_rhr="0" alpha="1" type="fill" name="" clip_to_extent="1" frame_rate="10">
     <data_defined_properties>
      <Option type="Map">
@@ -1315,7 +1299,7 @@ def my_form_open(dialog, layer, feature):
   </atlasClippingSettings>
   <itemClippingSettings enabled="0" forceLabelsInside="0" clipSource="" clippingType="2"/>
  </LayoutItem>
- <LayoutItem referencePoint="0" positionOnPage="3.971,9.8912,mm" svgBorderWidth="0.2" pictureRotation="0" blendMode="0" positionLock="true" opacity="1" zValue="13" groupUuid="" northOffset="0" size="7.60897,9.79125,mm" templateUuid="{d52ba922-73b4-4ee6-9852-7b30e11dff6b}" pictureHeight="9.60477" outlineWidthM="0.3,mm" uuid="{d52ba922-73b4-4ee6-9852-7b30e11dff6b}" frameJoinStyle="miter" file=":/images/north_arrows/layout_default_north_arrow.svg" itemRotation="0" northMode="0" id="Flecha del Norte" frame="false" excludeFromExports="0" background="false" visibility="1" svgBorderColor="0,0,0,255,rgb:0,0,0,1" anchorPoint="0" pictureWidth="7.60897" position="3.971,9.8912,mm" mapUuid="{4fbc0859-c89e-41e6-8dfe-d8001acae302}" type="65640" mode="2" resizeMode="0" svgFillColor="255,255,255,255,rgb:1,1,1,1">
+ <LayoutItem referencePoint="0" positionOnPage="3.971,9.8912,mm" svgBorderWidth="0.2" pictureRotation="0" blendMode="0" positionLock="true" opacity="1" zValue="13" groupUuid="" northOffset="0" size="7.60897,9.79125,mm" templateUuid="{4a3fe962-b5e3-4a29-a22e-33d26973fe8d}" pictureHeight="9.60477" outlineWidthM="0.3,mm" uuid="{4a3fe962-b5e3-4a29-a22e-33d26973fe8d}" frameJoinStyle="miter" file=":/images/north_arrows/layout_default_north_arrow.svg" itemRotation="0" northMode="0" id="Flecha del Norte" frame="false" excludeFromExports="0" background="false" visibility="1" svgBorderColor="0,0,0,255,rgb:0,0,0,1" anchorPoint="0" pictureWidth="7.60897" position="3.971,9.8912,mm" mapUuid="{01a8e909-f2a9-457b-a18e-fdc61d7742a5}" type="65640" mode="2" resizeMode="0" svgFillColor="255,255,255,255,rgb:1,1,1,1">
   <FrameColor red="0" green="0" alpha="255" blue="0"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
@@ -1331,7 +1315,7 @@ def my_form_open(dialog, layer, feature):
    </customproperties>
   </LayoutObject>
  </LayoutItem>
- <LayoutItem referencePoint="0" positionOnPage="90.2904,236.428,mm" marginY="0" blendMode="0" positionLock="true" opacity="1" zValue="12" groupUuid="" halign="4" size="45.1562,3.37527,mm" templateUuid="{47d55a49-8933-4a79-8d0c-9babe4dbe939}" outlineWidthM="0.3,mm" uuid="{47d55a49-8933-4a79-8d0c-9babe4dbe939}" frameJoinStyle="miter" itemRotation="0" valign="128" id="" frame="false" excludeFromExports="0" background="true" visibility="1" htmlState="0" position="90.2904,236.428,mm" labelText="Sistema de Cordenadas UTM WGS84-17S" marginX="0" type="65641">
+ <LayoutItem referencePoint="0" positionOnPage="90.2904,236.428,mm" marginY="0" blendMode="0" positionLock="true" opacity="1" zValue="12" groupUuid="" halign="4" size="45.1562,3.37527,mm" templateUuid="{6f230153-6f38-4e85-9e72-f40a0c445196}" outlineWidthM="0.3,mm" uuid="{6f230153-6f38-4e85-9e72-f40a0c445196}" frameJoinStyle="miter" itemRotation="0" valign="128" id="" frame="false" excludeFromExports="0" background="true" visibility="1" htmlState="0" position="90.2904,236.428,mm" labelText="Sistema de Cordenadas UTM WGS84-17S" marginX="0" type="65641">
   <FrameColor red="0" green="0" alpha="255" blue="0"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
@@ -1432,7 +1416,7 @@ def my_form_open(dialog, layer, feature):
    </dd_properties>
   </text-style>
  </LayoutItem>
- <LayoutItem referencePoint="0" positionOnPage="1.05,7.8938,mm" blendMode="0" positionLock="false" mapRotation="0" opacity="1" zValue="11" groupUuid="" size="134.347,231.859,mm" templateUuid="{4fbc0859-c89e-41e6-8dfe-d8001acae302}" drawCanvasItems="true" outlineWidthM="0.1,mm" keepLayerSet="true" uuid="{4fbc0859-c89e-41e6-8dfe-d8001acae302}" frameJoinStyle="miter" itemRotation="0" followPresetName="" id="Mapa" frame="true" labelMargin="0,mm" excludeFromExports="0" followPreset="false" enableZRange="0" background="true" visibility="1" isTemporal="0" position="1.05,7.8938,mm" mapFlags="0" type="65639">
+ <LayoutItem referencePoint="0" positionOnPage="1.05,7.8938,mm" blendMode="0" positionLock="false" mapRotation="0" opacity="1" zValue="11" groupUuid="" size="134.347,231.859,mm" templateUuid="{01a8e909-f2a9-457b-a18e-fdc61d7742a5}" drawCanvasItems="true" outlineWidthM="0.1,mm" keepLayerSet="true" uuid="{01a8e909-f2a9-457b-a18e-fdc61d7742a5}" frameJoinStyle="miter" itemRotation="0" followPresetName="" id="Mapa" frame="true" labelMargin="0,mm" excludeFromExports="0" followPreset="false" enableZRange="0" background="true" visibility="1" isTemporal="0" position="1.05,7.8938,mm" mapFlags="0" type="65639">
   <FrameColor red="0" green="0" alpha="255" blue="0"/>
   <BackgroundColor red="228" green="206" alpha="255" blue="227"/>
   <LayoutObject>
@@ -1453,7 +1437,7 @@ def my_form_open(dialog, layer, feature):
     <Option/>
    </customproperties>
   </LayoutObject>
-  <Extent ymax="9954505.2210451140999794" xmin="688698.76124999986495823" xmax="690109.40474999987054616" ymin="9952070.69661013782024384"/>
+  <Extent ymax="9954041.5021051187068224" xmin="688967.45524999988265336" xmax="689840.71074999985285103" ymin="9952534.41555013321340084"/>
   <crs>
    <spatialrefsys nativeFormat="Wkt">
     <wkt>PROJCRS["WGS 84 / UTM zone 17S",BASEGEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4326]],CONVERSION["UTM zone 17S",METHOD["Transverse Mercator",ID["EPSG",9807]],PARAMETER["Latitude of natural origin",0,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8801]],PARAMETER["Longitude of natural origin",-81,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8802]],PARAMETER["Scale factor at natural origin",0.9996,SCALEUNIT["unity",1],ID["EPSG",8805]],PARAMETER["False easting",500000,LENGTHUNIT["metre",1],ID["EPSG",8806]],PARAMETER["False northing",10000000,LENGTHUNIT["metre",1],ID["EPSG",8807]]],CS[Cartesian,2],AXIS["(E)",east,ORDER[1],LENGTHUNIT["metre",1]],AXIS["(N)",north,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Navigation and medium accuracy spatial referencing."],AREA["Between 84°W and 78°W, southern hemisphere between 80°S and equator, onshore and offshore. Ecuador. Peru."],BBOX[-80,-84,0,-78]],ID["EPSG",32717]]</wkt>
@@ -2888,9 +2872,9 @@ def my_form_open(dialog, layer, feature):
   <atlasClippingSettings enabled="0" forceLabelsInside="0" restrictLayers="0" clippingType="0">
    <layersToClip/>
   </atlasClippingSettings>
-  <itemClippingSettings enabled="1" forceLabelsInside="0" clipSource="{8ca1aa1b-b96f-45eb-8584-609d4673b1a5}" clippingType="0"/>
+  <itemClippingSettings enabled="1" forceLabelsInside="0" clipSource="" clippingType="0"/>
  </LayoutItem>
- <LayoutItem referencePoint="0" positionOnPage="141.971,129.95,mm" marginY="1" blendMode="0" positionLock="false" opacity="1" zValue="10" groupUuid="" halign="8" size="43.7,85,mm" templateUuid="{71cc94a9-a50c-4a41-b96f-4c8eeba630bf}" outlineWidthM="0.2,mm" uuid="{71cc94a9-a50c-4a41-b96f-4c8eeba630bf}" frameJoinStyle="miter" itemRotation="0" valign="32" id="" frame="true" excludeFromExports="0" background="false" visibility="1" htmlState="0" position="141.971,129.95,mm" labelText="OBSERVACION:&#xa;&#xa;" marginX="1" type="65641">
+ <LayoutItem referencePoint="0" positionOnPage="141.971,129.95,mm" marginY="1" blendMode="0" positionLock="false" opacity="1" zValue="10" groupUuid="" halign="8" size="43.7,85,mm" templateUuid="{6bfccdeb-8270-4352-a452-98639f2a1830}" outlineWidthM="0.2,mm" uuid="{6bfccdeb-8270-4352-a452-98639f2a1830}" frameJoinStyle="miter" itemRotation="0" valign="32" id="" frame="true" excludeFromExports="0" background="false" visibility="1" htmlState="0" position="141.971,129.95,mm" labelText="OBSERVACION:&#xa;&#xa;" marginX="1" type="65641">
   <FrameColor red="79" green="79" alpha="255" blue="79"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
@@ -2991,7 +2975,7 @@ def my_form_open(dialog, layer, feature):
    </dd_properties>
   </text-style>
  </LayoutItem>
- <LayoutItem referencePoint="0" positionOnPage="174.2,2.96315,mm" svgBorderWidth="0.2" pictureRotation="0" blendMode="0" positionLock="true" opacity="1" zValue="9" groupUuid="" northOffset="0" size="9.9103,11.8237,mm" templateUuid="{30c58235-305c-428e-81d9-3c163f956f5c}" pictureHeight="11.8237" outlineWidthM="0.3,mm" uuid="{30c58235-305c-428e-81d9-3c163f956f5c}" frameJoinStyle="miter" file="Y:/GDB/REPORTE 2022/escudo.png" itemRotation="0" northMode="0" id="Logo_SD" frame="false" excludeFromExports="0" background="false" visibility="1" svgBorderColor="0,0,0,255,rgb:0,0,0,1" anchorPoint="0" pictureWidth="9.1279" position="174.2,2.96315,mm" mapUuid="" type="65640" mode="1" resizeMode="0" svgFillColor="255,255,255,255,rgb:1,1,1,1">
+ <LayoutItem referencePoint="0" positionOnPage="174.2,2.96315,mm" svgBorderWidth="0.2" pictureRotation="0" blendMode="0" positionLock="true" opacity="1" zValue="9" groupUuid="" northOffset="0" size="9.9103,11.8237,mm" templateUuid="{bdc9cd05-79ec-4d2d-b595-b3b6e53669bd}" pictureHeight="11.8237" outlineWidthM="0.3,mm" uuid="{bdc9cd05-79ec-4d2d-b595-b3b6e53669bd}" frameJoinStyle="miter" file="Y:/GDB/REPORTE 2022/escudo.png" itemRotation="0" northMode="0" id="Logo_SD" frame="false" excludeFromExports="0" background="false" visibility="1" svgBorderColor="0,0,0,255,rgb:0,0,0,1" anchorPoint="0" pictureWidth="9.1279" position="174.2,2.96315,mm" mapUuid="" type="65640" mode="1" resizeMode="0" svgFillColor="255,255,255,255,rgb:1,1,1,1">
   <FrameColor red="0" green="0" alpha="255" blue="0"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
@@ -3007,7 +2991,7 @@ def my_form_open(dialog, layer, feature):
    </customproperties>
   </LayoutObject>
  </LayoutItem>
- <LayoutItem referencePoint="0" positionOnPage="143.332,1.9045,mm" svgBorderWidth="0.2" pictureRotation="0" blendMode="0" positionLock="true" opacity="1" zValue="8" groupUuid="" northOffset="0" size="26.1908,13.941,mm" templateUuid="{ca2ba0a8-888c-4e68-bdb5-8ab886d62e40}" pictureHeight="12.0813" outlineWidthM="0.3,mm" uuid="{ca2ba0a8-888c-4e68-bdb5-8ab886d62e40}" frameJoinStyle="miter" file="Y:/GDB/REPORTE 2022/logo.png" itemRotation="0" northMode="0" id="Logo_Ciudad" frame="false" excludeFromExports="0" background="false" visibility="1" svgBorderColor="0,0,0,255,rgb:0,0,0,1" anchorPoint="0" pictureWidth="26.1908" position="143.332,1.9045,mm" mapUuid="" type="65640" mode="1" resizeMode="0" svgFillColor="255,255,255,255,rgb:1,1,1,1">
+ <LayoutItem referencePoint="0" positionOnPage="143.332,1.9045,mm" svgBorderWidth="0.2" pictureRotation="0" blendMode="0" positionLock="true" opacity="1" zValue="8" groupUuid="" northOffset="0" size="26.1908,13.941,mm" templateUuid="{1b992db1-63c6-4b0c-83c7-d67d4d06a0ea}" pictureHeight="12.0813" outlineWidthM="0.3,mm" uuid="{1b992db1-63c6-4b0c-83c7-d67d4d06a0ea}" frameJoinStyle="miter" file="Y:/GDB/REPORTE 2022/logo.png" itemRotation="0" northMode="0" id="Logo_Ciudad" frame="false" excludeFromExports="0" background="false" visibility="1" svgBorderColor="0,0,0,255,rgb:0,0,0,1" anchorPoint="0" pictureWidth="26.1908" position="143.332,1.9045,mm" mapUuid="" type="65640" mode="1" resizeMode="0" svgFillColor="255,255,255,255,rgb:1,1,1,1">
   <FrameColor red="0" green="0" alpha="255" blue="0"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
@@ -3023,7 +3007,7 @@ def my_form_open(dialog, layer, feature):
    </customproperties>
   </LayoutObject>
  </LayoutItem>
- <LayoutItem referencePoint="0" positionOnPage="142.1,0.95,mm" blendMode="0" positionLock="true" opacity="0.8" zValue="7" groupUuid="" size="43.85,15.85,mm" templateUuid="{cc4ca840-6e13-4b5f-b889-807c4b7b70cd}" outlineWidthM="0.3,mm" uuid="{cc4ca840-6e13-4b5f-b889-807c4b7b70cd}" frameJoinStyle="miter" itemRotation="0" cornerRadiusMeasure="0,mm" shapeType="1" id="" frame="false" excludeFromExports="0" background="false" visibility="1" position="142.1,0.95,mm" type="65643">
+ <LayoutItem referencePoint="0" positionOnPage="142.1,0.95,mm" blendMode="0" positionLock="true" opacity="0.8" zValue="7" groupUuid="" size="43.85,15.85,mm" templateUuid="{32980d8a-04ad-429a-bb1c-648cc84d69d3}" outlineWidthM="0.3,mm" uuid="{32980d8a-04ad-429a-bb1c-648cc84d69d3}" frameJoinStyle="miter" itemRotation="0" cornerRadiusMeasure="0,mm" shapeType="1" id="" frame="false" excludeFromExports="0" background="false" visibility="1" position="142.1,0.95,mm" type="65643">
   <FrameColor red="0" green="0" alpha="255" blue="0"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
@@ -3086,7 +3070,7 @@ def my_form_open(dialog, layer, feature):
    </layer>
   </symbol>
  </LayoutItem>
- <LayoutItem referencePoint="0" positionOnPage="1.1,1.1,mm" marginY="0.6" blendMode="0" positionLock="true" opacity="1" zValue="6" groupUuid="" halign="4" size="138.7,244.7,mm" templateUuid="{3b6d4a2a-1e77-40af-8c96-348de6b374dd}" outlineWidthM="0.2,mm" uuid="{3b6d4a2a-1e77-40af-8c96-348de6b374dd}" frameJoinStyle="miter" itemRotation="0" valign="32" id="" frame="true" excludeFromExports="0" background="true" visibility="1" htmlState="0" position="1.1,1.1,mm" labelText="REPORTE DE UBICACIÓN GEOGRÁFICA" marginX="0" type="65641">
+ <LayoutItem referencePoint="0" positionOnPage="1.1,1.1,mm" marginY="0.6" blendMode="0" positionLock="true" opacity="1" zValue="6" groupUuid="" halign="4" size="138.7,244.7,mm" templateUuid="{56559d22-6f9c-49c3-981b-82691af5cf8c}" outlineWidthM="0.2,mm" uuid="{56559d22-6f9c-49c3-981b-82691af5cf8c}" frameJoinStyle="miter" itemRotation="0" valign="32" id="" frame="true" excludeFromExports="0" background="true" visibility="1" htmlState="0" position="1.1,1.1,mm" labelText="REPORTE DE UBICACIÓN GEOGRÁFICA" marginX="0" type="65641">
   <FrameColor red="79" green="79" alpha="255" blue="79"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
@@ -3187,7 +3171,7 @@ def my_form_open(dialog, layer, feature):
    </dd_properties>
   </text-style>
  </LayoutItem>
- <LayoutItem referencePoint="0" positionOnPage="141.95,219.9,mm" sectionWidth="43.85" blendMode="0" positionLock="false" sectionX="0" opacity="1" zValue="5" groupUuid="" sectionY="0" size="43.85,26,mm" templateUuid="{4b17ae19-7d3c-40c5-a990-dd5deca9797c}" outlineWidthM="0.3,mm" uuid="{4b17ae19-7d3c-40c5-a990-dd5deca9797c}" frameJoinStyle="miter" itemRotation="0" multiFrame="{6107284d-a958-498a-8bb3-8146d0fdf4d9}" multiFrameTemplateUuid="{6107284d-a958-498a-8bb3-8146d0fdf4d9}" id="FIRMAS DE RESPONSABILIDAD" frame="false" sectionHeight="26" hidePageIfEmpty="0" excludeFromExports="0" hideBackgroundIfEmpty="0" background="false" visibility="1" position="141.95,219.9,mm" type="65647">
+ <LayoutItem referencePoint="0" positionOnPage="141.95,219.9,mm" sectionWidth="43.85" blendMode="0" positionLock="false" sectionX="0" opacity="1" zValue="5" groupUuid="" sectionY="0" size="43.85,26,mm" templateUuid="{1b13928b-05e8-4b07-9282-307d01d790b6}" outlineWidthM="0.3,mm" uuid="{1b13928b-05e8-4b07-9282-307d01d790b6}" frameJoinStyle="miter" itemRotation="0" multiFrame="{6107284d-a958-498a-8bb3-8146d0fdf4d9}" multiFrameTemplateUuid="{6107284d-a958-498a-8bb3-8146d0fdf4d9}" id="FIRMAS DE RESPONSABILIDAD" frame="false" sectionHeight="26" hidePageIfEmpty="0" excludeFromExports="0" hideBackgroundIfEmpty="0" background="false" visibility="1" position="141.95,219.9,mm" type="65647">
   <FrameColor red="0" green="0" alpha="255" blue="0"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
@@ -3203,7 +3187,7 @@ def my_form_open(dialog, layer, feature):
    </customproperties>
   </LayoutObject>
  </LayoutItem>
- <LayoutItem referencePoint="0" positionOnPage="141.875,104.676,mm" sectionWidth="43.8957" blendMode="0" positionLock="false" sectionX="0" opacity="1" zValue="4" groupUuid="" sectionY="0" size="43.8957,25.1741,mm" templateUuid="{f73279a5-c2a4-4f09-ac59-8a311a13a22e}" outlineWidthM="0.3,mm" uuid="{f73279a5-c2a4-4f09-ac59-8a311a13a22e}" frameJoinStyle="miter" itemRotation="0" multiFrame="{8f0ee221-5884-470a-b4b8-dea7db0d1380}" multiFrameTemplateUuid="{8f0ee221-5884-470a-b4b8-dea7db0d1380}" id="TABLA DE CASOS" frame="false" sectionHeight="25.1741" hidePageIfEmpty="0" excludeFromExports="0" hideBackgroundIfEmpty="0" background="false" visibility="1" position="141.875,104.676,mm" type="65647">
+ <LayoutItem referencePoint="0" positionOnPage="141.875,104.676,mm" sectionWidth="43.8957" blendMode="0" positionLock="false" sectionX="0" opacity="1" zValue="4" groupUuid="" sectionY="0" size="43.8957,25.1741,mm" templateUuid="{dba70871-4208-4ec1-9795-31eff2b2071e}" outlineWidthM="0.3,mm" uuid="{dba70871-4208-4ec1-9795-31eff2b2071e}" frameJoinStyle="miter" itemRotation="0" multiFrame="{8f0ee221-5884-470a-b4b8-dea7db0d1380}" multiFrameTemplateUuid="{8f0ee221-5884-470a-b4b8-dea7db0d1380}" id="TABLA DE CASOS" frame="false" sectionHeight="25.1741" hidePageIfEmpty="0" excludeFromExports="0" hideBackgroundIfEmpty="0" background="false" visibility="1" position="141.875,104.676,mm" type="65647">
   <FrameColor red="0" green="0" alpha="255" blue="0"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
@@ -3219,7 +3203,7 @@ def my_form_open(dialog, layer, feature):
    </customproperties>
   </LayoutObject>
  </LayoutItem>
- <LayoutItem referencePoint="0" positionOnPage="142.05,31.05,mm" marginY="0" blendMode="0" positionLock="true" opacity="1" zValue="3" groupUuid="" halign="4" size="43.8,6.8,mm" templateUuid="{f0c68b73-40ea-41b5-aab7-3cea3f52c316}" outlineWidthM="0.2,mm" uuid="{f0c68b73-40ea-41b5-aab7-3cea3f52c316}" frameJoinStyle="miter" itemRotation="0" valign="128" id="" frame="true" excludeFromExports="0" background="false" visibility="1" htmlState="0" position="142.05,31.05,mm" labelText="Mapa de Ubicación" marginX="0" type="65641">
+ <LayoutItem referencePoint="0" positionOnPage="142.05,31.05,mm" marginY="0" blendMode="0" positionLock="true" opacity="1" zValue="3" groupUuid="" halign="4" size="43.8,6.8,mm" templateUuid="{a9c85cf9-edc0-4ad8-a35e-feaa07342b55}" outlineWidthM="0.2,mm" uuid="{a9c85cf9-edc0-4ad8-a35e-feaa07342b55}" frameJoinStyle="miter" itemRotation="0" valign="128" id="" frame="true" excludeFromExports="0" background="false" visibility="1" htmlState="0" position="142.05,31.05,mm" labelText="Mapa de Ubicación" marginX="0" type="65641">
   <FrameColor red="79" green="79" alpha="255" blue="79"/>
   <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
   <LayoutObject>
@@ -3281,7 +3265,7 @@ def my_form_open(dialog, layer, feature):
    </dd_properties>
   </text-style>
  </LayoutItem>
- <LayoutItem referencePoint="0" positionOnPage="142.1,19.1,mm" marginY="0" blendMode="0" positionLock="true" opacity="1" zValue="2" groupUuid="" halign="4" size="43.7,9.75,mm" templateUuid="{2f4afcd1-8352-4bc4-84fa-0dff218be6cb}" outlineWidthM="0.2,mm" uuid="{2f4afcd1-8352-4bc4-84fa-0dff218be6cb}" frameJoinStyle="miter" itemRotation="0" valign="128" id="" frame="true" excludeFromExports="0" background="true" visibility="1" htmlState="0" position="142.1,19.1,mm" labelText="Subdirección de Geomática" marginX="0" type="65641">
+ <LayoutItem referencePoint="0" positionOnPage="142.1,19.1,mm" marginY="0" blendMode="0" positionLock="true" opacity="1" zValue="2" groupUuid="" halign="4" size="43.7,9.75,mm" templateUuid="{3641014a-ab27-47d5-b0f4-f8566b1f976c}" outlineWidthM="0.2,mm" uuid="{3641014a-ab27-47d5-b0f4-f8566b1f976c}" frameJoinStyle="miter" itemRotation="0" valign="128" id="" frame="true" excludeFromExports="0" background="true" visibility="1" htmlState="0" position="142.1,19.1,mm" labelText="Subdirección de Geomática" marginX="0" type="65641">
   <FrameColor red="79" green="79" alpha="255" blue="79"/>
   <BackgroundColor red="166" green="206" alpha="255" blue="227"/>
   <LayoutObject>
@@ -3343,71 +3327,8 @@ def my_form_open(dialog, layer, feature):
    </dd_properties>
   </text-style>
  </LayoutItem>
- <LayoutItem referencePoint="0" positionOnPage="0.1,0.1,mm" blendMode="0" positionLock="true" opacity="1" zValue="1" groupUuid="" size="186.7,286.7,mm" templateUuid="{8ca1aa1b-b96f-45eb-8584-609d4673b1a5}" outlineWidthM="0.3,mm" uuid="{8ca1aa1b-b96f-45eb-8584-609d4673b1a5}" frameJoinStyle="miter" itemRotation="0" cornerRadiusMeasure="0,mm" shapeType="1" id="MARGEN" frame="false" excludeFromExports="0" background="false" visibility="1" position="0.1,0.1,mm" type="65643">
-  <FrameColor red="0" green="0" alpha="255" blue="0"/>
-  <BackgroundColor red="255" green="255" alpha="255" blue="255"/>
-  <LayoutObject>
-   <dataDefinedProperties>
-    <Option type="Map">
-     <Option value="" type="QString" name="name"/>
-     <Option name="properties"/>
-     <Option value="collection" type="QString" name="type"/>
-    </Option>
-   </dataDefinedProperties>
-   <customproperties>
-    <Option/>
-   </customproperties>
-  </LayoutObject>
-  <symbol is_animated="0" force_rhr="0" alpha="1" type="fill" name="" clip_to_extent="1" frame_rate="10">
-   <data_defined_properties>
-    <Option type="Map">
-     <Option value="" type="QString" name="name"/>
-     <Option name="properties"/>
-     <Option value="collection" type="QString" name="type"/>
-    </Option>
-   </data_defined_properties>
-   <layer enabled="1" id="{cbccfd78-c91b-45c9-97bc-9614074adb6f}" pass="0" class="SimpleLine" locked="0">
-    <Option type="Map">
-     <Option value="0" type="QString" name="align_dash_pattern"/>
-     <Option value="square" type="QString" name="capstyle"/>
-     <Option value="5;2" type="QString" name="customdash"/>
-     <Option value="3x:0,0,0,0,0,0" type="QString" name="customdash_map_unit_scale"/>
-     <Option value="MM" type="QString" name="customdash_unit"/>
-     <Option value="0" type="QString" name="dash_pattern_offset"/>
-     <Option value="3x:0,0,0,0,0,0" type="QString" name="dash_pattern_offset_map_unit_scale"/>
-     <Option value="MM" type="QString" name="dash_pattern_offset_unit"/>
-     <Option value="0" type="QString" name="draw_inside_polygon"/>
-     <Option value="miter" type="QString" name="joinstyle"/>
-     <Option value="79,79,79,255,rgb:0.30980392156862746,0.30980392156862746,0.30980392156862746,1" type="QString" name="line_color"/>
-     <Option value="solid" type="QString" name="line_style"/>
-     <Option value="0.2" type="QString" name="line_width"/>
-     <Option value="MM" type="QString" name="line_width_unit"/>
-     <Option value="0" type="QString" name="offset"/>
-     <Option value="3x:0,0,0,0,0,0" type="QString" name="offset_map_unit_scale"/>
-     <Option value="MM" type="QString" name="offset_unit"/>
-     <Option value="0" type="QString" name="ring_filter"/>
-     <Option value="0" type="QString" name="trim_distance_end"/>
-     <Option value="3x:0,0,0,0,0,0" type="QString" name="trim_distance_end_map_unit_scale"/>
-     <Option value="MM" type="QString" name="trim_distance_end_unit"/>
-     <Option value="0" type="QString" name="trim_distance_start"/>
-     <Option value="3x:0,0,0,0,0,0" type="QString" name="trim_distance_start_map_unit_scale"/>
-     <Option value="MM" type="QString" name="trim_distance_start_unit"/>
-     <Option value="0" type="QString" name="tweak_dash_pattern_on_corners"/>
-     <Option value="0" type="QString" name="use_custom_dash"/>
-     <Option value="3x:0,0,0,0,0,0" type="QString" name="width_map_unit_scale"/>
-    </Option>
-    <data_defined_properties>
-     <Option type="Map">
-      <Option value="" type="QString" name="name"/>
-      <Option name="properties"/>
-      <Option value="collection" type="QString" name="type"/>
-     </Option>
-    </data_defined_properties>
-   </layer>
-  </symbol>
- </LayoutItem>
- <LayoutMultiFrame gridStrokeWidth="0.2" emptyTableMode="0" includeHeader="0" headerHAlignment="0" showEmptyRows="1" showGrid="1" headerMode="2" verticalGrid="1" templateUuid="{d465a3a9-aee4-4901-b4d7-e2ef6ba5037d}" uuid="{d465a3a9-aee4-4901-b4d7-e2ef6ba5037d}" gridColor="0,0,0,255,rgb:0,0,0,1" backgroundColor="255,255,255,255,rgb:1,1,1,1" horizontalGrid="1" emptyTableMessage="" cellMargin="0.2" type="65652" resizeMode="0" wrapBehavior="0">
-  <childFrame templateUuid="{f73279a5-c2a4-4f09-ac59-8a311a13a22e}" uuid="{f73279a5-c2a4-4f09-ac59-8a311a13a22e}"/>
+ <LayoutMultiFrame gridStrokeWidth="0.2" emptyTableMode="0" includeHeader="0" headerHAlignment="0" showEmptyRows="1" showGrid="1" headerMode="2" verticalGrid="1" templateUuid="{391b4695-4180-4259-9352-ca583aabc30b}" uuid="{391b4695-4180-4259-9352-ca583aabc30b}" gridColor="0,0,0,255,rgb:0,0,0,1" backgroundColor="255,255,255,255,rgb:1,1,1,1" horizontalGrid="1" emptyTableMessage="" cellMargin="0.2" type="65652" resizeMode="0" wrapBehavior="0">
+  <childFrame templateUuid="{dba70871-4208-4ec1-9795-31eff2b2071e}" uuid="{dba70871-4208-4ec1-9795-31eff2b2071e}"/>
   <LayoutObject>
    <dataDefinedProperties>
     <Option type="Map">
@@ -3646,8 +3567,8 @@ def my_form_open(dialog, layer, feature):
    <column width="25.5"/>
   </columnWidths>
  </LayoutMultiFrame>
- <LayoutMultiFrame gridStrokeWidth="0.2" emptyTableMode="0" includeHeader="0" headerHAlignment="2" showEmptyRows="0" showGrid="1" headerMode="2" verticalGrid="1" templateUuid="{1696b8d8-ae9a-4f60-9c28-8c23f3dafdc6}" uuid="{1696b8d8-ae9a-4f60-9c28-8c23f3dafdc6}" gridColor="79,79,79,255,rgb:0.30980392156862746,0.30980392156862746,0.30980392156862746,1" backgroundColor="255,255,255,255,rgb:1,1,1,1" horizontalGrid="1" emptyTableMessage="" cellMargin="0.8" type="65652" resizeMode="0" wrapBehavior="0">
-  <childFrame templateUuid="{4b17ae19-7d3c-40c5-a990-dd5deca9797c}" uuid="{4b17ae19-7d3c-40c5-a990-dd5deca9797c}"/>
+ <LayoutMultiFrame gridStrokeWidth="0.2" emptyTableMode="0" includeHeader="0" headerHAlignment="2" showEmptyRows="0" showGrid="1" headerMode="2" verticalGrid="1" templateUuid="{70e3d35b-bfd2-4db4-b6df-57713e19b6dd}" uuid="{70e3d35b-bfd2-4db4-b6df-57713e19b6dd}" gridColor="79,79,79,255,rgb:0.30980392156862746,0.30980392156862746,0.30980392156862746,1" backgroundColor="255,255,255,255,rgb:1,1,1,1" horizontalGrid="1" emptyTableMessage="" cellMargin="0.8" type="65652" resizeMode="0" wrapBehavior="0">
+  <childFrame templateUuid="{1b13928b-05e8-4b07-9282-307d01d790b6}" uuid="{1b13928b-05e8-4b07-9282-307d01d790b6}"/>
   <LayoutObject>
    <dataDefinedProperties>
     <Option type="Map">
@@ -3868,8 +3789,8 @@ def my_form_open(dialog, layer, feature):
    <column width="9.5"/>
   </columnWidths>
  </LayoutMultiFrame>
- <LayoutMultiFrame gridStrokeWidth="0.1" maxFeatures="1" emptyTableMode="0" showUniqueRowsOnly="0" filterFeatures="false" headerHAlignment="0" showEmptyRows="0" showGrid="1" filterToAtlasIntersection="0" headerMode="0" verticalGrid="1" templateUuid="{c0535e16-34a1-4214-bcba-4134afea3334}" vectorLayerProvider="postgres" wrapString="" uuid="{c0535e16-34a1-4214-bcba-4134afea3334}" gridColor="61,61,61,255,hsv:0,0,0.23921568627450981,1" showOnlyVisibleFeatures="0" vectorLayer="lote_rural_6e763450_9ca4_4f26_b749_213f05128410" backgroundColor="255,255,255,255,rgb:1,1,1,1" useConditionalStyling="0" horizontalGrid="1" emptyTableMessage="" vectorLayerName="lote_rural" cellMargin="0.8" source="1" relationId="" vectorLayerSource="dbname='gadmsd' host=172.16.3.144 port=5432 user='postgres' sslmode=disable key='gid' srid=32717 type=MultiPolygon checkPrimaryKeyUnicity='1' table=&quot;geomatica&quot;.&quot;lote_rural&quot; (geom)" mapUuid="{4fbc0859-c89e-41e6-8dfe-d8001acae302}" type="65649" resizeMode="0" featureFilter="&quot;gid&quot; IN (array_agg(@selected_features))&#xd;&#xa;" wrapBehavior="0">
-  <childFrame templateUuid="{02e90b9a-2413-47e8-97bb-c34c3a8f271d}" uuid="{02e90b9a-2413-47e8-97bb-c34c3a8f271d}"/>
+ <LayoutMultiFrame gridStrokeWidth="0.1" maxFeatures="1" emptyTableMode="0" showUniqueRowsOnly="0" filterFeatures="false" headerHAlignment="0" showEmptyRows="0" showGrid="1" filterToAtlasIntersection="0" headerMode="0" verticalGrid="1" templateUuid="{eb9896a6-b1dd-402b-b791-69c7812f4846}" vectorLayerProvider="postgres" wrapString="" uuid="{eb9896a6-b1dd-402b-b791-69c7812f4846}" gridColor="61,61,61,255,hsv:0,0,0.23921568627450981,1" showOnlyVisibleFeatures="0" vectorLayer="lote_rural_6e763450_9ca4_4f26_b749_213f05128410" backgroundColor="255,255,255,255,rgb:1,1,1,1" useConditionalStyling="0" horizontalGrid="1" emptyTableMessage="" vectorLayerName="lote_rural" cellMargin="0.8" source="1" relationId="" vectorLayerSource="dbname='gadmsd' host=172.16.3.144 port=5432 user='postgres' sslmode=disable key='gid' srid=32717 type=MultiPolygon checkPrimaryKeyUnicity='1' table=&quot;geomatica&quot;.&quot;lote_rural&quot; (geom)" mapUuid="{01a8e909-f2a9-457b-a18e-fdc61d7742a5}" type="65649" resizeMode="0" featureFilter="&quot;gid&quot; IN (array_agg(@selected_features))&#xd;&#xa;" wrapBehavior="0">
+  <childFrame templateUuid="{b2168ee2-0023-44a8-9edc-39c74590ebf0}" uuid="{b2168ee2-0023-44a8-9edc-39c74590ebf0}"/>
   <LayoutObject>
    <dataDefinedProperties>
     <Option type="Map">
