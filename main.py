@@ -3,6 +3,7 @@ from qgis.PyQt.QtWidgets import QAction, QMessageBox, QInputDialog
 from qgis.PyQt.QtGui import QIcon
 from qgis.core import QgsProject
 from qgis.utils import iface
+from qgis.gui import QgsLayoutDesignerDialog  # <-- Asegúrate de importar esto
 
 class LayoutPlugin:
     def __init__(self, iface):
@@ -32,7 +33,7 @@ class LayoutPlugin:
             gid_valor = feature["gid"]
 
             if isinstance(gid_valor, str):
-                filtro = f'"gid" = \'{gid_valor}\'' 
+                filtro = f'"gid" = \'{gid_valor}\''
             else:
                 filtro = f'"gid" = {gid_valor}'
 
@@ -47,17 +48,23 @@ class LayoutPlugin:
             seleccionado, ok = QInputDialog.getItem(self.iface.mainWindow(), "Seleccionar composición", "Elige una:", nombres, editable=False)
 
             if ok and seleccionado:
-                # Cerrar el layout actual si ya está abierto
                 layout_obj = next((l for l in layouts if l.name() == seleccionado), None)
                 if layout_obj:
-                    # Reiniciar el filtro y la información del Atlas
+                    # Configura Atlas
                     atlas = layout_obj.atlas()
                     atlas.setCoverageLayer(layer)
                     atlas.setFilterFeatures(True)
                     atlas.setFilterExpression(filtro)
                     atlas.setEnabled(True)
 
-                    # Abre el layout con los nuevos datos
+                    # Verifica si ya hay una ventana abierta con ese layout
+                    for widget in self.iface.mainWindow().findChildren(QgsLayoutDesignerDialog):
+                        if widget.layout().name() == layout_obj.name():
+                            widget.raise_()
+                            widget.activateWindow()
+                            return  # No abrir de nuevo, solo enfocar
+
+                    # Abre el layout si no estaba abierto
                     self.iface.openLayoutDesigner(layout_obj)
 
         except Exception as e:
