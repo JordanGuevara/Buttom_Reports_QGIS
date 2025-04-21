@@ -29,9 +29,23 @@ class LayoutPlugin:
 
             selected_features = layer.selectedFeatures()
             feature = selected_features[0]
-            gid_valor = feature["gid"]
 
-            filtro = f'"gid" = \'{gid_valor}\'' if isinstance(gid_valor, str) else f'"gid" = {gid_valor}'
+            # Pregunta al usuario si desea usar gid o caso
+            opciones = ["Solo el objeto seleccionado (por GID)", "Todos los objetos del mismo caso"]
+            eleccion, ok = QInputDialog.getItem(self.iface.mainWindow(), "Tipo de reporte", "¿Qué deseas generar?", opciones, editable=False)
+
+            if not ok:
+                return
+
+            # Construir el filtro según la elección
+            if eleccion == opciones[0]:
+                # Filtrar por gid
+                gid_valor = feature["gid"]
+                filtro = f'"gid" = \'{gid_valor}\'' if isinstance(gid_valor, str) else f'"gid" = {gid_valor}'
+            else:
+                # Filtrar por caso
+                caso_valor = feature["caso"]
+                filtro = f'"caso" = \'{caso_valor}\'' if isinstance(caso_valor, str) else f'"caso" = {caso_valor}'
 
             manager = QgsProject.instance().layoutManager()
             layouts = manager.printLayouts()
@@ -46,15 +60,14 @@ class LayoutPlugin:
             if ok and seleccionado:
                 layout_obj = next((l for l in layouts if l.name() == seleccionado), None)
                 if layout_obj:
-                    # Actualizar el atlas antes de abrir
                     atlas = layout_obj.atlas()
                     atlas.setCoverageLayer(layer)
                     atlas.setFilterFeatures(True)
                     atlas.setFilterExpression(filtro)
                     atlas.setEnabled(True)
 
-                    # Abre el layout — esto "refresca" la ventana aunque esté abierta
                     self.iface.openLayoutDesigner(layout_obj)
 
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Ocurrió un error: {str(e)}")
+
