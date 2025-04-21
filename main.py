@@ -31,7 +31,7 @@ class LayoutPlugin:
             feature = selected_features[0]
 
             # Pregunta al usuario si desea usar gid o caso
-            opciones = ["Solo el objeto seleccionado (por GID)", "Todos los objetos del mismo caso"]
+            opciones = ["Reporte del Lote", "Reporte por casos"]
             eleccion, ok = QInputDialog.getItem(self.iface.mainWindow(), "Tipo de reporte", "¿Qué deseas generar?", opciones, editable=False)
 
             if not ok:
