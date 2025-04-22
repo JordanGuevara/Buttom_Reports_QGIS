@@ -1,7 +1,7 @@
 import os
 from qgis.PyQt.QtWidgets import QAction, QMessageBox, QInputDialog
 from qgis.PyQt.QtGui import QIcon
-from qgis.core import QgsProject
+from qgis.core import QgsProject, QgsLayoutItemAttributeTable
 from qgis.utils import iface
 
 class LayoutPlugin:
@@ -38,10 +38,12 @@ class LayoutPlugin:
                 return
 
             # Construir el filtro según la elección
+            usar_gid = False
             if eleccion == opciones[0]:
                 # Filtrar por gid
                 gid_valor = feature["gid"]
                 filtro = f'"gid" = \'{gid_valor}\'' if isinstance(gid_valor, str) else f'"gid" = {gid_valor}'
+                usar_gid = True
             else:
                 # Filtrar por caso
                 caso_valor = feature["caso"]
@@ -66,8 +68,16 @@ class LayoutPlugin:
                     atlas.setFilterExpression(filtro)
                     atlas.setEnabled(True)
 
+                    # Aplicar el mismo filtro a las tablas del layout
+                    for item in layout_obj.items():
+                        if isinstance(item, QgsLayoutItemAttributeTable):
+                            item.setFilterFeatures(True)
+                            if usar_gid:
+                                item.setFilterExpression('"gid" = @atlas_feature[\'gid\']')
+                            else:
+                                item.setFilterExpression('"caso" = @atlas_feature[\'caso\']')
+
                     self.iface.openLayoutDesigner(layout_obj)
 
         except Exception as e:
             QMessageBox.critical(None, "Error", f"Ocurrió un error: {str(e)}")
-
