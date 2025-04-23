@@ -231,7 +231,7 @@
    </customproperties>
   </LayoutObject>
  </LayoutItem>
- <LayoutItem positionLock="false" frameJoinStyle="miter" followPreset="true" opacity="1" drawCanvasItems="true" enableZRange="0" labelMargin="0,mm" type="65639" mapFlags="0" id="Mapa" background="true" groupUuid="" size="222.899,142.464,mm" isTemporal="0" uuid="{c652ee4a-6367-4211-ad12-5ffc457f56fe}" position="13.0678,13.6025,mm" frame="false" excludeFromExports="0" visibility="1" blendMode="0" outlineWidthM="0.3,mm" zValue="29" keepLayerSet="false" itemRotation="0" positionOnPage="13.0678,13.6025,mm" templateUuid="{c652ee4a-6367-4211-ad12-5ffc457f56fe}" referencePoint="0" mapRotation="0" followPresetName="">
+ <LayoutItem positionLock="false" frameJoinStyle="miter" followPreset="true" opacity="1" drawCanvasItems="true" enableZRange="0" labelMargin="0,mm" type="65639" mapFlags="0" id="Mapa" background="true" groupUuid="" size="222.899,142.464,mm" isTemporal="0" uuid="{c652ee4a-6367-4211-ad12-5ffc457f56fe}" position="13.0678,13.6025,mm" frame="false" excludeFromExports="0" visibility="1" blendMode="10" outlineWidthM="0.3,mm" zValue="29" keepLayerSet="false" itemRotation="0" positionOnPage="13.0678,13.6025,mm" templateUuid="{c652ee4a-6367-4211-ad12-5ffc457f56fe}" referencePoint="0" mapRotation="0" followPresetName="">
   <FrameColor blue="0" alpha="255" green="0" red="0"/>
   <BackgroundColor blue="227" alpha="255" green="206" red="228"/>
   <LayoutObject>
@@ -246,7 +246,7 @@
     <Option/>
    </customproperties>
   </LayoutObject>
-  <Extent xmax="724052.06655354518443346" ymin="9982928.96535231173038483" ymax="9983641.28604643046855927" xmin="722937.57155354507267475"/>
+  <Extent xmax="724329.46678618062287569" ymin="9982944.6482451818883419" ymax="9983606.71019198000431061" xmin="723293.60648408904671669"/>
   <crs>
    <spatialrefsys nativeFormat="Wkt">
     <wkt>PROJCRS["WGS 84 / UTM zone 17S",BASEGEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4326]],CONVERSION["UTM zone 17S",METHOD["Transverse Mercator",ID["EPSG",9807]],PARAMETER["Latitude of natural origin",0,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8801]],PARAMETER["Longitude of natural origin",-81,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8802]],PARAMETER["Scale factor at natural origin",0.9996,SCALEUNIT["unity",1],ID["EPSG",8805]],PARAMETER["False easting",500000,LENGTHUNIT["metre",1],ID["EPSG",8806]],PARAMETER["False northing",10000000,LENGTHUNIT["metre",1],ID["EPSG",8807]]],CS[Cartesian,2],AXIS["(E)",east,ORDER[1],LENGTHUNIT["metre",1]],AXIS["(N)",north,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Navigation and medium accuracy spatial referencing."],AREA["Between 84°W and 78°W, southern hemisphere between 80°S and equator, onshore and offshore. Ecuador. Peru."],BBOX[-80,-84,0,-78]],ID["EPSG",32717]]</wkt>
