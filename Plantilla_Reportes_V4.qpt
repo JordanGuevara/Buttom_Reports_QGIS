@@ -1432,7 +1432,7 @@ def my_form_open(dialog, layer, feature):
    </dd_properties>
   </text-style>
  </LayoutItem>
- <LayoutItem positionLock="false" frameJoinStyle="miter" followPreset="true" opacity="1" drawCanvasItems="true" enableZRange="0" labelMargin="0,mm" type="65639" mapFlags="0" id="Mapa" background="true" groupUuid="" size="134.347,231.859,mm" isTemporal="0" uuid="{b5b4d27c-c162-434c-96e9-9db6114b775b}" position="68.2235,123.824,mm" frame="false" excludeFromExports="0" visibility="1" blendMode="0" outlineWidthM="0.1,mm" zValue="11" keepLayerSet="false" itemRotation="0" positionOnPage="68.2235,123.824,mm" templateUuid="{b5b4d27c-c162-434c-96e9-9db6114b775b}" referencePoint="4" mapRotation="0" zRangeLower="123" followPresetName="">
+ <LayoutItem positionLock="false" frameJoinStyle="miter" followPreset="true" opacity="1" drawCanvasItems="true" enableZRange="0" labelMargin="0,mm" type="65639" mapFlags="0" id="Mapa" background="true" groupUuid="" size="134.347,231.859,mm" isTemporal="0" uuid="{b5b4d27c-c162-434c-96e9-9db6114b775b}" position="68.2235,123.824,mm" frame="false" excludeFromExports="0" visibility="1" blendMode="10" outlineWidthM="0.1,mm" zValue="11" keepLayerSet="false" itemRotation="0" positionOnPage="68.2235,123.824,mm" templateUuid="{b5b4d27c-c162-434c-96e9-9db6114b775b}" referencePoint="4" mapRotation="0" zRangeLower="123" followPresetName="">
   <FrameColor blue="0" alpha="255" green="0" red="0"/>
   <BackgroundColor blue="227" alpha="255" green="206" red="228"/>
   <LayoutObject>
@@ -1458,7 +1458,7 @@ def my_form_open(dialog, layer, feature):
     <Option/>
    </customproperties>
   </LayoutObject>
-  <Extent xmax="696251.07470769970677793" ymin="9945357.32091060653328896" ymax="9945960.1555326022207737" xmin="695901.77250769967213273"/>
+  <Extent xmax="723830.68655354517977685" ymin="9982705.47702437452971935" ymax="9983864.77437436766922474" xmin="723158.95155354507733136"/>
   <crs>
    <spatialrefsys nativeFormat="Wkt">
     <wkt>PROJCRS["WGS 84 / UTM zone 17S",BASEGEOGCRS["WGS 84",ENSEMBLE["World Geodetic System 1984 ensemble",MEMBER["World Geodetic System 1984 (Transit)"],MEMBER["World Geodetic System 1984 (G730)"],MEMBER["World Geodetic System 1984 (G873)"],MEMBER["World Geodetic System 1984 (G1150)"],MEMBER["World Geodetic System 1984 (G1674)"],MEMBER["World Geodetic System 1984 (G1762)"],MEMBER["World Geodetic System 1984 (G2139)"],ELLIPSOID["WGS 84",6378137,298.257223563,LENGTHUNIT["metre",1]],ENSEMBLEACCURACY[2.0]],PRIMEM["Greenwich",0,ANGLEUNIT["degree",0.0174532925199433]],ID["EPSG",4326]],CONVERSION["UTM zone 17S",METHOD["Transverse Mercator",ID["EPSG",9807]],PARAMETER["Latitude of natural origin",0,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8801]],PARAMETER["Longitude of natural origin",-81,ANGLEUNIT["degree",0.0174532925199433],ID["EPSG",8802]],PARAMETER["Scale factor at natural origin",0.9996,SCALEUNIT["unity",1],ID["EPSG",8805]],PARAMETER["False easting",500000,LENGTHUNIT["metre",1],ID["EPSG",8806]],PARAMETER["False northing",10000000,LENGTHUNIT["metre",1],ID["EPSG",8807]]],CS[Cartesian,2],AXIS["(E)",east,ORDER[1],LENGTHUNIT["metre",1]],AXIS["(N)",north,ORDER[2],LENGTHUNIT["metre",1]],USAGE[SCOPE["Navigation and medium accuracy spatial referencing."],AREA["Between 84°W and 78°W, southern hemisphere between 80°S and equator, onshore and offshore. Ecuador. Peru."],BBOX[-80,-84,0,-78]],ID["EPSG",32717]]</wkt>
@@ -1512,7 +1512,7 @@ def my_form_open(dialog, layer, feature):
       <layer class="SimpleFill" locked="0" pass="0" enabled="1" id="{248d430a-a2ac-4c99-a798-0712803b4fa6}">
        <Option type="Map">
         <Option value="3x:0,0,0,0,0,0" type="QString" name="border_width_map_unit_scale"/>
-        <Option value="205,255,201,71,hsv:0.32222222222222224,0.21176470588235294,1,0.27843137254901962" type="QString" name="color"/>
+        <Option value="255,255,255,72,hsv:0.32222222222222224,0,1,0.28235294117647058" type="QString" name="color"/>
         <Option value="bevel" type="QString" name="joinstyle"/>
         <Option value="0,0" type="QString" name="offset"/>
         <Option value="3x:0,0,0,0,0,0" type="QString" name="offset_map_unit_scale"/>
@@ -2707,5 +2707,5 @@ def my_form_open(dialog, layer, feature):
    <Option value="true" type="bool" name="singleFile"/>
   </Option>
  </customproperties>
- <Atlas sortFeatures="0" coverageLayerSource="dbname='gadmsd' host=172.16.3.144 port=5432 user='postgres' sslmode=disable key='gid' srid=32717 type=MultiPolygon checkPrimaryKeyUnicity='1' table=&quot;geomatica&quot;.&quot;lote_rural&quot; (geom)" coverageLayerName="lote_rural" hideCoverage="0" coverageLayer="lote_rural_6e763450_9ca4_4f26_b749_213f05128410" featureFilter="&quot;gid&quot; = 4126" enabled="1" filenamePattern="'output_'||@atlas_featurenumber" filterFeatures="1" coverageLayerProvider="postgres" pageNameExpression="&quot;nom_predio&quot;"/>
+ <Atlas sortFeatures="0" coverageLayerSource="dbname='gadmsd' host=172.16.3.144 port=5432 user='postgres' sslmode=disable key='gid' srid=32717 type=MultiPolygon checkPrimaryKeyUnicity='1' table=&quot;geomatica&quot;.&quot;lote_rural&quot; (geom)" coverageLayerName="lote_rural" hideCoverage="0" coverageLayer="lote_rural_6e763450_9ca4_4f26_b749_213f05128410" featureFilter="&quot;gid&quot; = 8600" enabled="1" filenamePattern="'output_'||@atlas_featurenumber" filterFeatures="1" coverageLayerProvider="postgres" pageNameExpression="&quot;nom_predio&quot;"/>
 </Layout>
