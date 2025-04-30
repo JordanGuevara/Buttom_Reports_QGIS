@@ -30,24 +30,26 @@ class LayoutPlugin:
             selected_features = layer.selectedFeatures()
             feature = selected_features[0]
 
-            # Pregunta al usuario si desea usar gid o caso
-            opciones = ["Reporte del Lote", "Reporte por casos"]
+            # Agregar opción para ID
+            opciones = ["Reporte del Lote (gid)", "Reporte por casos (caso)", "Reporte por ID (id)"]
             eleccion, ok = QInputDialog.getItem(self.iface.mainWindow(), "Tipo de reporte", "¿Qué deseas generar?", opciones, editable=False)
 
             if not ok:
                 return
 
-            # Construir el filtro según la elección
-            usar_gid = False
+            campo_usado = ""
             if eleccion == opciones[0]:
-                # Filtrar por gid
                 gid_valor = feature["gid"]
                 filtro = f'"gid" = \'{gid_valor}\'' if isinstance(gid_valor, str) else f'"gid" = {gid_valor}'
-                usar_gid = True
-            else:
-                # Filtrar por caso
+                campo_usado = "gid"
+            elif eleccion == opciones[1]:
                 caso_valor = feature["caso"]
                 filtro = f'"caso" = \'{caso_valor}\'' if isinstance(caso_valor, str) else f'"caso" = {caso_valor}'
+                campo_usado = "caso"
+            elif eleccion == opciones[2]:
+                id_valor = feature["id"]
+                filtro = f'"id" = \'{id_valor}\'' if isinstance(id_valor, str) else f'"id" = {id_valor}'
+                campo_usado = "id"
 
             manager = QgsProject.instance().layoutManager()
             layouts = manager.printLayouts()
@@ -72,10 +74,7 @@ class LayoutPlugin:
                     for item in layout_obj.items():
                         if isinstance(item, QgsLayoutItemAttributeTable):
                             item.setFilterFeatures(True)
-                            if usar_gid:
-                                item.setFilterExpression('"gid" = @atlas_feature[\'gid\']')
-                            else:
-                                item.setFilterExpression('"caso" = @atlas_feature[\'caso\']')
+                            item.setFilterExpression(f'"{campo_usado}" = @atlas_feature[\'{campo_usado}\']')
 
                     self.iface.openLayoutDesigner(layout_obj)
 
