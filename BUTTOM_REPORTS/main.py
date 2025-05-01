@@ -1,7 +1,13 @@
 import os
 from qgis.PyQt.QtWidgets import QAction, QMessageBox, QInputDialog
 from qgis.PyQt.QtGui import QIcon
-from qgis.core import QgsProject, QgsLayoutItemAttributeTable
+from qgis.core import (
+    QgsProject,
+    QgsLayoutItemAttributeTable,
+    QgsVectorLayer,
+    QgsFeature,
+    QgsGeometry,
+)
 from qgis.utils import iface
 
 class LayoutPlugin:
@@ -30,7 +36,6 @@ class LayoutPlugin:
             selected_features = layer.selectedFeatures()
             feature = selected_features[0]
 
-            # Agregar opción para ID
             opciones = ["Reporte del Lote (gid)", "Reporte por casos (caso)", "Reporte por ID (id)"]
             eleccion, ok = QInputDialog.getItem(self.iface.mainWindow(), "Tipo de reporte", "¿Qué deseas generar?", opciones, editable=False)
 
@@ -38,14 +43,52 @@ class LayoutPlugin:
                 return
 
             campo_usado = ""
+            filtro = ""
+
             if eleccion == opciones[0]:
                 gid_valor = feature["gid"]
                 filtro = f'"gid" = \'{gid_valor}\'' if isinstance(gid_valor, str) else f'"gid" = {gid_valor}'
                 campo_usado = "gid"
+
             elif eleccion == opciones[1]:
                 caso_valor = feature["caso"]
-                filtro = f'"caso" = \'{caso_valor}\'' if isinstance(caso_valor, str) else f'"caso" = {caso_valor}'
                 campo_usado = "caso"
+
+                geom_lote = feature.geometry()
+                capas_parroquias = QgsProject.instance().mapLayersByName("parroquias")
+                if not capas_parroquias:
+                    QMessageBox.critical(None, "Error", "No se encontró la capa 'parroquias' en el proyecto.")
+                    return
+                capa_parroquias = capas_parroquias[0]
+
+                parroquia_geom = None
+                for parroquia in capa_parroquias.getFeatures():
+                    if parroquia.geometry().contains(geom_lote):
+                        parroquia_geom = parroquia.geometry()
+                        break
+
+                if not parroquia_geom:
+                    QMessageBox.warning(None, "Error", "No se encontró la parroquia correspondiente al lote seleccionado.")
+                    return
+
+                capa_lotes = layer
+                crs = capa_lotes.crs().authid()
+                uri = f"{capa_lotes.geometryType()}?crs={crs}"
+                temporal_layer = QgsVectorLayer(uri, "FiltradoZona", "memory")
+                temporal_layer_data = temporal_layer.dataProvider()
+                temporal_layer_data.addAttributes(capa_lotes.fields())
+                temporal_layer.updateFields()
+
+                for feat in capa_lotes.getFeatures():
+                    if feat["caso"] == caso_valor and parroquia_geom.contains(feat.geometry()):
+                        temporal_layer_data.addFeature(feat)
+
+                temporal_layer.updateExtents()
+                QgsProject.instance().addMapLayer(temporal_layer)
+
+                layer = temporal_layer
+                filtro = ""  # La capa ya está filtrada
+
             elif eleccion == opciones[2]:
                 id_valor = feature["id"]
                 filtro = f'"id" = \'{id_valor}\'' if isinstance(id_valor, str) else f'"id" = {id_valor}'
@@ -66,7 +109,7 @@ class LayoutPlugin:
                 if layout_obj:
                     atlas = layout_obj.atlas()
                     atlas.setCoverageLayer(layer)
-                    atlas.setFilterFeatures(True)
+                    atlas.setFilterFeatures(bool(filtro))
                     atlas.setFilterExpression(filtro)
                     atlas.setEnabled(True)
 
