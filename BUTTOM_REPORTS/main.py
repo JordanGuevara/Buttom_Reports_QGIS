@@ -71,23 +71,8 @@ class LayoutPlugin:
                     QMessageBox.warning(None, "Error", "No se encontró la parroquia correspondiente al lote seleccionado.")
                     return
 
-                capa_lotes = layer
-                crs = capa_lotes.crs().authid()
-                uri = f"{capa_lotes.geometryType()}?crs={crs}"
-                temporal_layer = QgsVectorLayer(uri, "FiltradoZona", "memory")
-                temporal_layer_data = temporal_layer.dataProvider()
-                temporal_layer_data.addAttributes(capa_lotes.fields())
-                temporal_layer.updateFields()
-
-                for feat in capa_lotes.getFeatures():
-                    if feat["caso"] == caso_valor and parroquia_geom.contains(feat.geometry()):
-                        temporal_layer_data.addFeature(feat)
-
-                temporal_layer.updateExtents()
-                QgsProject.instance().addMapLayer(temporal_layer)
-
-                layer = temporal_layer
-                filtro = ""  # La capa ya está filtrada
+                filtro_geom = f"intersects($geometry, geom_from_wkt('{parroquia_geom.asWkt()}'))"
+                filtro = f'"caso" = \'{caso_valor}\' AND {filtro_geom}'
 
             elif eleccion == opciones[2]:
                 id_valor = feature["id"]
@@ -113,7 +98,6 @@ class LayoutPlugin:
                     atlas.setFilterExpression(filtro)
                     atlas.setEnabled(True)
 
-                    # Aplicar el mismo filtro a las tablas del layout
                     for item in layout_obj.items():
                         if isinstance(item, QgsLayoutItemAttributeTable):
                             item.setFilterFeatures(True)
