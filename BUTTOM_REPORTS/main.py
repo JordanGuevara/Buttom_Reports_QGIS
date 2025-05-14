@@ -74,6 +74,21 @@ class LayoutPlugin:
                 filtro_geom = f"intersects($geometry, geom_from_wkt('{parroquia_geom.asWkt()}'))"
                 filtro = f'"caso" = \'{caso_valor}\' AND {filtro_geom}'
 
+                # Mostrar solo etiquetas del mismo caso
+                if layer.labelsEnabled():
+                    etiquetas = layer.labeling()
+                    provider = etiquetas.settings().clone()
+                    provider.fieldName = "nom_predio"  # Asegúrate que es el campo correcto
+                    provider.setDataDefinedProperty(
+                        QgsVectorLayer.SimpleLabeling.ShowLabel,
+                        True,
+                        True,
+                        f'"caso" = \'{caso_valor}\''
+                    )
+                    layer.setLabeling(QgsVectorLayer.SimpleLabeling(provider))
+                    layer.triggerRepaint()
+
+
             elif eleccion == opciones[2]:
                 id_valor = feature["id"]
                 filtro = f'"id" = \'{id_valor}\'' if isinstance(id_valor, str) else f'"id" = {id_valor}'
