@@ -66,8 +66,9 @@ class ExtremosPredio:
             punto_sup = max(vertices, key=lambda p: p.y())
             punto_inf = min(vertices, key=lambda p: p.y())
 
-            g_sup = QgsGeometry.fromPointXY(punto_sup)
-            g_inf = QgsGeometry.fromPointXY(punto_inf)
+            g_sup = QgsGeometry.fromPointXY(QgsPointXY(punto_sup.x(), punto_sup.y()))
+            g_inf = QgsGeometry.fromPointXY(QgsPointXY(punto_inf.x(), punto_inf.y()))
+
 
             cerca_sup = any(calle.geometry().distance(g_sup) < tolerancia for calle in layer_calles.getFeatures())
             cerca_inf = any(calle.geometry().distance(g_inf) < tolerancia for calle in layer_calles.getFeatures())
