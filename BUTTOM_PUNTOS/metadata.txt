@@ -1,0 +1,11 @@
+[general]
+name=extremos_predio
+qgisMinimumVersion=3.10
+author=Jordan Guevara
+email=axndr154@gmail.com
+description=Botón para mostrar/ocultar puntos extremos del predio cerca de calles.
+version=1.0
+homepage=https://github.com/JordanGuevara
+tracker=
+repository=
+icon=
