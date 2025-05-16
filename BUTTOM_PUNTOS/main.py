@@ -22,7 +22,7 @@ class ExtremosPredio:
 
     def initGui(self):
         icono = QIcon(self.icono_path) if os.path.exists(self.icono_path) else QIcon.fromTheme("document-print")
-        self.action = QAction("Mostrar/Ocultar extremos predio", self.iface.mainWindow())
+        self.action = QAction(icono,"Mostrar/Ocultar extremos predio", self.iface.mainWindow())
         self.action.triggered.connect(self.mostrar_ocultar_puntos_extremos)
         self.iface.addToolBarIcon(self.action)
         self.iface.addPluginToMenu("&Extremos Predio", self.action)
