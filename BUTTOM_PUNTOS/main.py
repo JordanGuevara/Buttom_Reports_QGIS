@@ -1,7 +1,16 @@
-from qgis.PyQt.QtWidgets import QAction
-from qgis.core import *
-from qgis.utils import iface
+from qgis.core import (
+    QgsProject,
+    QgsVectorLayer,
+    QgsField,
+    QgsFeature,
+    QgsGeometry,
+    QgsPointXY,
+    QgsWkbTypes
+)
 from PyQt5.QtCore import QVariant
+from PyQt5.QtWidgets import QAction
+from qgis.utils import iface
+
 import os
 
 class ExtremosPredio:
