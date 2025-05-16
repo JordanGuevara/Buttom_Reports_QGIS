@@ -1,0 +1,21 @@
+#
+Expresion para mostrar los nombres que compartan el mismo campo.
+
+Dirigirse a la capa, seleccionar propiedades
+Ir a etiquetas, ir a la parte inferior, selecionar estilos y añadir nuevo estilo
+La siguiente expresion colocar en el apartado de valor en etiquetas:
+
+Expresion con el gid
+    CASE
+        WHEN "gid" = attribute(@atlas_feature, 'gid') THEN "nom_predio"
+        ELSE NULL
+    END
+Expresion para el mismo caso
+    CASE
+        WHEN "caso" = attribute(@atlas_feature, 'caso') THEN "nom_predio"
+        ELSE NULL
+    END
+
+Nota: Añadir mas cambios si es que se requiere en el mapa principal y correspondientes en el estilo.
+Ir en la parte superior de las capas y seleccionar "Administrar Temas de Capas" y selecionar "Añadir Tema..."
+#
