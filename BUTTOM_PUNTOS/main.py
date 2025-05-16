@@ -57,7 +57,7 @@ class ExtremosPredio:
         prov.addAttributes([QgsField("gid_predio", QVariant.Int), QgsField("ubicacion", QVariant.String)])
         salida.updateFields()
 
-        for f in layer_predios.getFeatures():
+        for f in layer_predios.selectedFeatures():
             geom = f.geometry()
             if not geom:
                 continue
