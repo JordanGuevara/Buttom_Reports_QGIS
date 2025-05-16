@@ -1,7 +1,6 @@
-Plugin para la automatización de datos en un layout QGIS
+**Plugin para la automatización de datos en un layout QGIS**
 Este plugin permite automatizar la generación de reportes en QGIS a partir de la selección de uno o varios objetos espaciales. Incluye un botón que genera informes PDF con datos personalizados según las capas de entrada y las intersecciones espaciales.
-
-Funcionalidad principal: Botón de reporte
+**Funcionalidad principal: Botón de reporte**
 El botón de reporte implementado realiza lo siguiente:
 
 Generación de reporte individual o por grupo:
@@ -19,17 +18,13 @@ El diseño del layout se adapta al número de objetos y a los resultados obtenid
 Vista previa editable:
 El campo observaciones del layout se puede editar antes de exportar el PDF.
 
-Requisitos
-QGIS 3.x
+**Requisitos**
+- QGIS 3.x
+- Capas con geometrías válidas y campos esperados (gid, nom_predio, etc.)
 
-Capas con geometrías válidas y campos esperados (gid, nom_predio, etc.)
-
-Uso
-Selecciona uno o más objetos en la capa base.
-
-Haz clic en el botón de reporte.
-
-Elige entre generar un reporte individual o por caso.
-
-Se genera un archivo PDF con los datos calculados automáticamente.
+**Uso**
+- Selecciona uno o más objetos en la capa base.
+- Haz clic en el botón de reporte.
+- Elige entre generar un reporte individual o por caso.
+- Se genera un archivo PDF con los datos calculados automáticamente.
 
