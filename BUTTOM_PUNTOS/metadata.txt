@@ -8,4 +8,4 @@ version=1.0
 homepage=https://github.com/JordanGuevara
 tracker=
 repository=
-icon=
+icon=icono_puntos.png
