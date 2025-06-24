@@ -1,14 +1,27 @@
 import os
+from itertools import combinations  # ya lo usas para extremos
+
 from qgis.PyQt.QtWidgets import QAction, QMessageBox, QInputDialog
 from qgis.PyQt.QtGui import QIcon
+
 from qgis.core import (
     QgsProject,
     QgsLayoutItemAttributeTable,
     QgsVectorLayer,
     QgsFeature,
     QgsGeometry,
+    QgsField,
+    QgsPointXY,
+    QgsRenderContext,
+    QgsVectorLayerSimpleLabeling,
+    QgsPalLayerSettings,
+    QgsTextFormat
 )
+
+from qgis.PyQt.QtCore import QVariant
 from qgis.utils import iface
+from PyQt5.QtGui import QColor
+
 
 class LayoutPlugin:
     def __init__(self, iface):
@@ -50,7 +63,7 @@ class LayoutPlugin:
                 filtro = f'"gid" = \'{gid_valor}\'' if isinstance(gid_valor, str) else f'"gid" = {gid_valor}'
                 campo_usado = "gid"
 
-            elif eleccion == opciones[1]:
+                        elif eleccion == opciones[1]:  # Reporte por casos (caso)
                 caso_valor = feature["caso"]
                 campo_usado = "caso"
 
@@ -71,13 +84,143 @@ class LayoutPlugin:
                     QMessageBox.warning(None, "Error", "No se encontró la parroquia correspondiente al lote seleccionado.")
                     return
 
+                # Filtro base por el campo "caso" y geometría
                 filtro_geom = f"intersects($geometry, geom_from_wkt('{parroquia_geom.asWkt()}'))"
-                filtro = f'"caso" = \'{caso_valor}\' AND {filtro_geom}'
+                filtro_base = f'"caso" = \'{caso_valor}\' AND {filtro_geom}'
 
-            elif eleccion == opciones[2]:
-                id_valor = feature["id"]
-                filtro = f'"id" = \'{id_valor}\'' if isinstance(id_valor, str) else f'"id" = {id_valor}'
-                campo_usado = "id"
+                # Preguntar si se desea añadir un campo adicional
+                respuesta = QMessageBox.question(
+                    None,
+                    "¿Agregar filtro adicional?",
+                    "¿Deseas añadir un filtro por otro campo?",
+                    QMessageBox.Yes | QMessageBox.No,
+                    QMessageBox.No
+                )
+
+                if respuesta == QMessageBox.Yes:
+                    # Obtener campos disponibles, excluyendo 'caso'
+                    campos = [f.name() for f in layer.fields() if f.name() != "caso"]
+                    campo_extra, ok = QInputDialog.getItem(
+                        self.iface.mainWindow(), "Campo adicional",
+                        "Selecciona el campo adicional:", campos, editable=False
+                    )
+                    if not ok:
+                        return
+
+                    valor_extra, ok = QInputDialog.getText(
+                        self.iface.mainWindow(), "Valor del campo",
+                        f"Ingrese el valor exacto para el campo '{campo_extra}':"
+                    )
+                    if not ok or valor_extra.strip() == "":
+                        return
+
+                    # Detectar tipo para comillas o no
+                    tipo_extra = layer.fields().lookupField(campo_extra)
+                    tipo = layer.fields()[tipo_extra].type()
+                    if tipo in (QVariant.Int, QVariant.Double):
+                        filtro_extra = f'"{campo_extra}" = {valor_extra}'
+                    else:
+                        filtro_extra = f'"{campo_extra}" = \'{valor_extra}\''
+
+                    filtro = f'{filtro_base} AND {filtro_extra}'
+                else:
+                    filtro = filtro_base
+
+            elif eleccion == opciones[2]:  
+                id_valor = feature["id"]  
+                filtro = f'"id" = \'{id_valor}\'' if isinstance(id_valor, str) else f'"id" = {id_valor}'  
+                campo_usado = "id"  
+  
+                crs = QgsProject.instance().crs()  
+                crs_id = crs.authid()  
+  
+                geom_predio = feature.geometry()  
+                vertices = list(geom_predio.vertices())  
+  
+                capas_ejes = QgsProject.instance().mapLayersByName("Ejes Viales")  
+                if not capas_ejes:  
+                    QMessageBox.critical(None, "Error", "No se encontró la capa 'Ejes Viales'.")  
+                    return  
+                capa_ejes = capas_ejes[0]  
+  
+                nombre_capa = "Extremos_Cercanos"  
+                existente = None  
+                for lyr in QgsProject.instance().mapLayers().values():  
+                    if lyr.name() == nombre_capa:  
+                        existente = lyr  
+                        break  
+  
+                if existente:  
+                    QgsProject.instance().removeMapLayer(existente)  
+  
+                capa_puntos = QgsVectorLayer(f"Point?crs={crs_id}", nombre_capa, "memory")  
+                prov_puntos = capa_puntos.dataProvider()  
+                prov_puntos.addAttributes([  
+                    QgsField("Pts", QVariant.Int),  
+                    QgsField("Este(X)", QVariant.Double),  
+                    QgsField("Norte(Y)", QVariant.Double)  
+                ])  
+                capa_puntos.updateFields()  
+  
+                from itertools import combinations  
+                distancias = []  
+                for i, j in combinations(range(len(vertices)), 2):  
+                    p1 = vertices[i]  
+                    p2 = vertices[j]  
+                    d = ((p1.x() - p2.x())**2 + (p1.y() - p2.y())**2)**0.5  
+                    distancias.append((d, i, j))  
+  
+                distancias.sort(reverse=True)  
+                indices_usados = set()  
+                extremos = []  
+  
+                for _, i, j in distancias:  
+                    if len(extremos) >= 4:  
+                        break  
+                    if i not in indices_usados:  
+                        extremos.append(vertices[i])  
+                        indices_usados.add(i)  
+                    if len(extremos) >= 4:  
+                        break  
+                    if j not in indices_usados:  
+                        extremos.append(vertices[j])  
+                        indices_usados.add(j)  
+  
+                distancia_umbral = 3  # metros  
+                contador = 1  
+                for v in extremos:  
+                    punto = QgsGeometry.fromPointXY(QgsPointXY(v.x(), v.y()))  
+                    for eje in capa_ejes.getFeatures():  
+                        if punto.distance(eje.geometry()) <= distancia_umbral:  
+                            fet = QgsFeature()  
+                            fet.setGeometry(punto)  
+                            fet.setAttributes([  
+                                contador,  
+                                round(v.x(), 4),  
+                                round(v.y(), 4)  
+                            ])  
+                            prov_puntos.addFeatures([fet])  
+                            contador += 1  
+                            break  
+  
+                capa_puntos.updateExtents()  
+                QgsProject.instance().addMapLayer(capa_puntos)  
+  
+                etiqueta = QgsPalLayerSettings()  
+                texto_format = QgsTextFormat()  
+                texto_format.setSize(10)  
+                texto_format.setNamedStyle("Bold")  
+  
+                etiqueta.fieldName = "Pts"  
+                etiqueta.placement = QgsPalLayerSettings.OverPoint  
+                etiqueta.enabled = True  
+                etiqueta.setFormat(texto_format)  
+  
+                context = QgsRenderContext()  
+                etiqueta_ref = QgsVectorLayerSimpleLabeling(etiqueta)  
+                capa_puntos.setLabelsEnabled(True)  
+                capa_puntos.setLabeling(etiqueta_ref)  
+                capa_puntos.triggerRepaint()
 
             manager = QgsProject.instance().layoutManager()
             layouts = manager.printLayouts()
