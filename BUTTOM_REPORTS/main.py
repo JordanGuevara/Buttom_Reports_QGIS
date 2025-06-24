@@ -63,7 +63,7 @@ class LayoutPlugin:
                 filtro = f'"gid" = \'{gid_valor}\'' if isinstance(gid_valor, str) else f'"gid" = {gid_valor}'
                 campo_usado = "gid"
 
-                        elif eleccion == opciones[1]:  # Reporte por casos (caso)
+            elif eleccion == opciones[1]:  # Reporte por casos (caso)
                 caso_valor = feature["caso"]
                 campo_usado = "caso"
 
