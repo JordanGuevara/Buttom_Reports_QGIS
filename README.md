@@ -29,3 +29,5 @@ El campo observaciones del layout se puede editar antes de exportar el PDF.
 - Elige entre generar un reporte individual o por caso.
 - Se genera un archivo PDF con los datos calculados automáticamente.
 
+# ¿Cómo instalar?
+En el apartado de archivos se encuentra dichas guías de como usar y manejar dicho plugin.
